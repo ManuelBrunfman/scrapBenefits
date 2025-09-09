@@ -1,6 +1,10 @@
 {
   "dependencies": {
-    "puppeteer": "^24.18.0",
+    "firebase": "^12.2.1",
+    "firebase-admin": "^13.5.0",
+    "puppeteer": "^24.19.0",
+    "sharp": "^0.34.3",
+    "talisman": "^1.1.4",
     "tesseract.js": "^6.0.1"
   }
 }

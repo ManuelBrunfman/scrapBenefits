@@ -3,16 +3,16 @@
     "titulo": "Megatlon. Convenio para afiliadas y afiliados",
     "link": "https://labancaria.org/beneficios/megatlon-convenio-para-afiliadas-y-afiliados",
     "imagen_url": "",
-    "categoria": "Deportes y Gimnasios",
+    "categoria": "Deportes y Gimnasos",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:05.069Z",
+    "fecha_scraping": "2025-09-08T18:48:53.610Z",
     "confidence": 1,
     "reasons": [
-      "[+3] Deportes y Gimnasios: título: \"megatlon\"",
-      "[+1.5] Deportes y Gimnasios: detalle: \"megatlon\"",
-      "[+1.5] Deportes y Gimnasios: url: \"megatlon\"",
-      "[+4] Deportes y Gimnasios: marca/entidad"
+      "[+3] Deportes y Gimnasos: título: \"megatlon\"",
+      "[+1.5] Deportes y Gimnasos: detalle: \"megatlon\"",
+      "[+1.5] Deportes y Gimnasos: url: \"megatlon\"",
+      "[+4] Deportes y Gimnasos: marca/entidad"
     ]
   },
   {
@@ -22,7 +22,7 @@
     "categoria": "Servicios",
     "provincia": "Nacional",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:07.423Z",
+    "fecha_scraping": "2025-09-08T18:48:57.726Z",
     "confidence": 1,
     "reasons": [
       "[+5] Servicios: estructura del título",
@@ -40,7 +40,7 @@
     "categoria": "Servicios",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:09.666Z",
+    "fecha_scraping": "2025-09-08T18:49:00.278Z",
     "confidence": 1,
     "reasons": [
       "[+5] Servicios: estructura del título",
@@ -57,7 +57,7 @@
     "categoria": "Transporte",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:12.313Z",
+    "fecha_scraping": "2025-09-08T18:49:02.764Z",
     "confidence": 0.739,
     "reasons": [
       "[+3] Transporte: título: \"hertz\"",
@@ -74,7 +74,7 @@
     "categoria": "Transporte",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:14.580Z",
+    "fecha_scraping": "2025-09-08T18:49:05.817Z",
     "confidence": 0.872,
     "reasons": [
       "[+3] Transporte: título: \"micro\"",
@@ -84,7 +84,9 @@
       "[+1.5] Transporte: detalle: \"rutatlantica\"",
       "[+1.5] Transporte: detalle: \"rutatlántica\"",
       "[+1.5] Retail / Comercios: detalle: \"descuento\"",
-      "[+1.5] Transporte: url: \"micro\""
+      "[+1.5] Transporte: url: \"micro\"",
+      "[+1.5] Transporte: url: \"rutatlantica\"",
+      "[+1.5] Transporte: url: \"rutatlántica\""
     ]
   },
   {
@@ -94,7 +96,7 @@
     "categoria": "Transporte",
     "provincia": "Nacional",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:16.818Z",
+    "fecha_scraping": "2025-09-08T18:49:08.857Z",
     "confidence": 0.5,
     "reasons": [
       "[+3] Transporte: título: \"rent car\"",
@@ -109,7 +111,7 @@
     "categoria": "Transporte",
     "provincia": "Nacional",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:19.627Z",
+    "fecha_scraping": "2025-09-08T18:49:11.465Z",
     "confidence": 0.739,
     "reasons": [
       "[+3] Transporte: título: \"chevalier\"",
@@ -126,7 +128,7 @@
     "categoria": "Transporte",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:22.010Z",
+    "fecha_scraping": "2025-09-08T18:49:14.570Z",
     "confidence": 0.7,
     "reasons": [
       "[+3] Transporte: título: \"crucero del norte\"",
@@ -142,7 +144,7 @@
     "categoria": "Servicios",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:24.240Z",
+    "fecha_scraping": "2025-09-08T18:49:17.259Z",
     "confidence": 0.727,
     "reasons": [
       "[+5] Excursiones y Actividades: estructura del título",
@@ -160,7 +162,7 @@
     "categoria": "Salud",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:26.342Z",
+    "fecha_scraping": "2025-09-08T18:49:19.993Z",
     "confidence": 1,
     "reasons": [
       "[+5] Salud: estructura del título",
@@ -175,7 +177,7 @@
     "categoria": "Servicios",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:28.491Z",
+    "fecha_scraping": "2025-09-08T18:49:22.410Z",
     "confidence": 0.867,
     "reasons": [
       "[+5] Servicios: estructura del título",
@@ -185,7 +187,8 @@
       "[+1.5] Servicios: detalle: \"sepelio\"",
       "[+1.5] Servicios: detalle: \"cobertura\"",
       "[+1.5] Servicios: detalle: \"seguros\"",
-      "[+1.5] Servicios: url: \"seguros\""
+      "[+1.5] Servicios: url: \"seguros\"",
+      "[+4] Servicios: marca/entidad"
     ]
   },
   {
@@ -195,7 +198,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:30.606Z",
+    "fecha_scraping": "2025-09-08T18:49:25.058Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -212,7 +215,7 @@
     "categoria": "Alojamiento",
     "provincia": "CABA",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:32.755Z",
+    "fecha_scraping": "2025-09-08T18:49:27.572Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -228,7 +231,7 @@
     "categoria": "Alojamiento",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:34.887Z",
+    "fecha_scraping": "2025-09-08T18:49:30.407Z",
     "confidence": 0.333,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"noches\"",
@@ -243,7 +246,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:38.903Z",
+    "fecha_scraping": "2025-09-08T18:49:35.204Z",
     "confidence": 1,
     "reasons": [
       "[+3] Alojamiento: título: \"class\"",
@@ -259,7 +262,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:41.124Z",
+    "fecha_scraping": "2025-09-08T18:49:38.354Z",
     "confidence": 0,
     "reasons": []
   },
@@ -270,7 +273,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:43.335Z",
+    "fecha_scraping": "2025-09-08T18:49:42.108Z",
     "confidence": 0,
     "reasons": []
   },
@@ -281,7 +284,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:46.134Z",
+    "fecha_scraping": "2025-09-08T18:49:45.252Z",
     "confidence": 0,
     "reasons": []
   },
@@ -292,7 +295,7 @@
     "categoria": "Alojamiento",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:48.351Z",
+    "fecha_scraping": "2025-09-08T18:49:48.503Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"departamentos\"",
@@ -308,7 +311,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:50.698Z",
+    "fecha_scraping": "2025-09-08T18:49:52.314Z",
     "confidence": 0.786,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -326,7 +329,7 @@
     "categoria": "Alojamiento",
     "provincia": "San Luis",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:53.148Z",
+    "fecha_scraping": "2025-09-08T18:49:55.491Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -342,7 +345,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:55.280Z",
+    "fecha_scraping": "2025-09-08T18:49:58.214Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"excursiones\"",
@@ -359,7 +362,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:10:59.397Z",
+    "fecha_scraping": "2025-09-08T18:50:03.746Z",
     "confidence": 0.838,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -379,7 +382,7 @@
     "categoria": "Alojamiento",
     "provincia": "Salta",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:01.463Z",
+    "fecha_scraping": "2025-09-08T18:50:08.512Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"cabañas\"",
@@ -395,7 +398,7 @@
     "categoria": "Alojamiento",
     "provincia": "Santa Cruz",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:03.728Z",
+    "fecha_scraping": "2025-09-08T18:50:11.743Z",
     "confidence": 0.478,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -405,7 +408,9 @@
       "[+1.5] Alojamiento: detalle: \"hotel\"",
       "[+1.5] Alojamiento: detalle: \"boutique\"",
       "[+1.5] Retail / Comercios: detalle: \"boutique\"",
-      "[+1.5] Alojamiento: url: \"hotel\""
+      "[+1.5] Alojamiento: url: \"hotel\"",
+      "[+1.5] Alojamiento: url: \"boutique\"",
+      "[+1.5] Retail / Comercios: url: \"boutique\""
     ]
   },
   {
@@ -415,7 +420,7 @@
     "categoria": "Alojamiento",
     "provincia": "Misiones",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:05.959Z",
+    "fecha_scraping": "2025-09-08T18:50:15.494Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -432,7 +437,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:08.075Z",
+    "fecha_scraping": "2025-09-08T18:50:19.289Z",
     "confidence": 1,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"termas\"",
@@ -447,7 +452,7 @@
     "categoria": "Alojamiento",
     "provincia": "Santa Cruz",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:10.174Z",
+    "fecha_scraping": "2025-09-08T18:50:22.896Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -457,7 +462,9 @@
       "[+1.5] Alojamiento: detalle: \"hosteria\"",
       "[+1.5] Alojamiento: detalle: \"hostería\"",
       "[+1.5] Alojamiento: detalle: \"lodge\"",
-      "[+1.5] Alojamiento: detalle: \"habitacion\""
+      "[+1.5] Alojamiento: detalle: \"habitacion\"",
+      "[+1.5] Alojamiento: detalle: \"reservas\"",
+      "[+1.5] Alojamiento: url: \"hosteria\""
     ]
   },
   {
@@ -467,7 +474,7 @@
     "categoria": "Alojamiento",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:12.477Z",
+    "fecha_scraping": "2025-09-08T18:50:25.869Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"noches\""
@@ -480,7 +487,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:16.422Z",
+    "fecha_scraping": "2025-09-08T18:50:31.321Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"noches\"",
@@ -494,7 +501,7 @@
     "categoria": "Alojamiento",
     "provincia": "Santa Cruz",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:18.954Z",
+    "fecha_scraping": "2025-09-08T18:50:34.258Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -504,7 +511,9 @@
       "[+1.5] Alojamiento: detalle: \"hostería\"",
       "[+1.5] Alojamiento: detalle: \"habitacion\"",
       "[+1.5] Alojamiento: detalle: \"standard\"",
-      "[+1.5] Alojamiento: detalle: \"superior\""
+      "[+1.5] Alojamiento: detalle: \"superior\"",
+      "[+1.5] Alojamiento: detalle: \"reservas\"",
+      "[+1.5] Alojamiento: url: \"hosteria\""
     ]
   },
   {
@@ -514,7 +523,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:21.424Z",
+    "fecha_scraping": "2025-09-08T18:50:36.851Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"hotel\"",
@@ -528,7 +537,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:23.786Z",
+    "fecha_scraping": "2025-09-08T18:50:39.412Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -541,7 +550,7 @@
     "categoria": "Alojamiento",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:28.395Z",
+    "fecha_scraping": "2025-09-08T18:50:44.613Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -551,7 +560,9 @@
       "[+1.5] Alojamiento: detalle: \"hotel\"",
       "[+1.5] Alojamiento: detalle: \"apart\"",
       "[+1.5] Alojamiento: detalle: \"apart hotel\"",
-      "[+1.5] Alojamiento: detalle: \"habitacion\""
+      "[+1.5] Alojamiento: detalle: \"habitacion\"",
+      "[+1.5] Alojamiento: detalle: \"noche\"",
+      "[+1.5] Alojamiento: detalle: \"tarifa\""
     ]
   },
   {
@@ -561,7 +572,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:30.759Z",
+    "fecha_scraping": "2025-09-08T18:50:47.582Z",
     "confidence": 0.564,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -571,7 +582,9 @@
       "[+1.5] Alojamiento: detalle: \"hotel\"",
       "[+1.5] Alojamiento: detalle: \"boutique\"",
       "[+1.5] Alojamiento: detalle: \"habitacion\"",
-      "[+1.5] Alojamiento: detalle: \"noche\""
+      "[+1.5] Alojamiento: detalle: \"noche\"",
+      "[+1.5] Alojamiento: detalle: \"tarifa\"",
+      "[+1.5] Retail / Comercios: detalle: \"boutique\""
     ]
   },
   {
@@ -581,7 +594,7 @@
     "categoria": "Alojamiento",
     "provincia": "Salta",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:33.401Z",
+    "fecha_scraping": "2025-09-08T18:50:50.180Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -597,11 +610,11 @@
     "titulo": "Mirador del Tafí hotel-restaurant-spa. Tafí del Valle-Tucumán",
     "link": "https://labancaria.org/beneficios/mirador-del-tafi-hotel-restaurant-spa-tafi-del-valle-tucuman",
     "imagen_url": "",
-    "categoria": "Alojamiento",
+    "categoria": "Gastronomía",
     "provincia": "Tucumán",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:35.764Z",
-    "confidence": 0.478,
+    "fecha_scraping": "2025-09-08T18:50:52.747Z",
+    "confidence": 0.6,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
       "[+3] Alojamiento: título: \"hotel\"",
@@ -610,7 +623,10 @@
       "[+1.5] Alojamiento: detalle: \"hotel\"",
       "[+1.5] Alojamiento: detalle: \"spa\"",
       "[+1.5] Gastronomía: detalle: \"restaurant\"",
-      "[+1.5] Alojamiento: url: \"hotel\""
+      "[+1.5] Alojamiento: url: \"hotel\"",
+      "[+1.5] Alojamiento: url: \"spa\"",
+      "[+1.5] Gastronomía: url: \"restaurant\"",
+      "[CORREGIDO] De Alojamiento a Gastronomía por validación"
     ]
   },
   {
@@ -620,7 +636,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:38.101Z",
+    "fecha_scraping": "2025-09-08T18:50:55.595Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"spa\"",
@@ -636,7 +652,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:40.409Z",
+    "fecha_scraping": "2025-09-08T18:50:58.141Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -649,7 +665,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:44.467Z",
+    "fecha_scraping": "2025-09-08T18:51:03.539Z",
     "confidence": 0.878,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -659,7 +675,9 @@
       "[+1.5] Alojamiento: detalle: \"hotel\"",
       "[+1.5] Alojamiento: detalle: \"apart\"",
       "[+1.5] Alojamiento: detalle: \"spa\"",
-      "[+1.5] Retail / Comercios: detalle: \"descuento\""
+      "[+1.5] Retail / Comercios: detalle: \"descuento\"",
+      "[+1.5] Alojamiento: url: \"hotel\"",
+      "[+1.5] Alojamiento: url: \"apart\""
     ]
   },
   {
@@ -669,7 +687,7 @@
     "categoria": "Alojamiento",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:46.829Z",
+    "fecha_scraping": "2025-09-08T18:51:06.188Z",
     "confidence": 1,
     "reasons": [
       "[+3] Alojamiento: título: \"casa de campo\"",
@@ -683,7 +701,7 @@
     "categoria": "Alojamiento",
     "provincia": "Neuquén",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:49.190Z",
+    "fecha_scraping": "2025-09-08T18:51:08.958Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"habitacion\"",
@@ -698,7 +716,7 @@
     "categoria": "Alojamiento",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:51.489Z",
+    "fecha_scraping": "2025-09-08T18:51:11.692Z",
     "confidence": 0.818,
     "reasons": [
       "[+3] Alojamiento: título: \"complejo turistico\"",
@@ -718,7 +736,7 @@
     "categoria": "Alojamiento",
     "provincia": "San Luis",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:53.754Z",
+    "fecha_scraping": "2025-09-08T18:51:14.576Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"habitacion\"",
@@ -733,7 +751,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Catamarca",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:56.122Z",
+    "fecha_scraping": "2025-09-08T18:51:17.135Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -746,7 +764,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:11:58.300Z",
+    "fecha_scraping": "2025-09-08T18:51:20.064Z",
     "confidence": 1,
     "reasons": [
       "[+3] Alojamiento: título: \"class\"",
@@ -763,7 +781,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:00.420Z",
+    "fecha_scraping": "2025-09-08T18:51:22.714Z",
     "confidence": 0.739,
     "reasons": [
       "[+3] Alojamiento: título: \"tower\"",
@@ -780,7 +798,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:02.782Z",
+    "fecha_scraping": "2025-09-08T18:51:25.715Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"termas\"",
@@ -796,7 +814,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Río Negro",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:05.180Z",
+    "fecha_scraping": "2025-09-08T18:51:28.384Z",
     "confidence": 0.769,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"turismo\"",
@@ -814,7 +832,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:07.424Z",
+    "fecha_scraping": "2025-09-08T18:51:31.202Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"tower\"",
@@ -830,7 +848,7 @@
     "categoria": "Alojamiento",
     "provincia": "Neuquén",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:09.790Z",
+    "fecha_scraping": "2025-09-08T18:51:33.863Z",
     "confidence": 0.838,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -850,7 +868,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:11.993Z",
+    "fecha_scraping": "2025-09-08T18:51:36.553Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"alojamiento\"",
@@ -864,7 +882,7 @@
     "categoria": "Alojamiento",
     "provincia": "Formosa",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:16.140Z",
+    "fecha_scraping": "2025-09-08T18:51:41.412Z",
     "confidence": 0.455,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\"",
@@ -878,7 +896,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Formosa",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:18.502Z",
+    "fecha_scraping": "2025-09-08T18:51:44.024Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -891,7 +909,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:20.862Z",
+    "fecha_scraping": "2025-09-08T18:51:46.651Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -908,7 +926,7 @@
     "categoria": "Alojamiento",
     "provincia": "Río Negro",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:23.167Z",
+    "fecha_scraping": "2025-09-08T18:51:49.258Z",
     "confidence": 0.5,
     "reasons": [
       "[+3] Alojamiento: título: \"departamentos\"",
@@ -923,7 +941,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Neuquén",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:25.437Z",
+    "fecha_scraping": "2025-09-08T18:51:51.744Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -936,7 +954,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Río Negro",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:27.690Z",
+    "fecha_scraping": "2025-09-08T18:51:54.239Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -949,7 +967,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:30.054Z",
+    "fecha_scraping": "2025-09-08T18:51:56.729Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"termas\"",
@@ -965,7 +983,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:32.355Z",
+    "fecha_scraping": "2025-09-08T18:51:59.215Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"termas\"",
@@ -981,7 +999,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:34.441Z",
+    "fecha_scraping": "2025-09-08T18:52:01.722Z",
     "confidence": 0,
     "reasons": []
   },
@@ -992,7 +1010,7 @@
     "categoria": "Alojamiento",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:36.802Z",
+    "fecha_scraping": "2025-09-08T18:52:04.337Z",
     "confidence": 0.818,
     "reasons": [
       "[+3] Alojamiento: título: \"complejo turistico\"",
@@ -1012,7 +1030,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:39.146Z",
+    "fecha_scraping": "2025-09-08T18:52:06.735Z",
     "confidence": 0.867,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1022,7 +1040,8 @@
       "[+1.5] Alojamiento: detalle: \"spa\"",
       "[+1.5] Retail / Comercios: detalle: \"descuento\"",
       "[+1.5] Alojamiento: url: \"hotel\"",
-      "[+1.5] Alojamiento: url: \"spa\""
+      "[+1.5] Alojamiento: url: \"spa\"",
+      "[+4] Alojamiento: marca/entidad"
     ]
   },
   {
@@ -1032,7 +1051,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:41.463Z",
+    "fecha_scraping": "2025-09-08T18:52:09.524Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"alojamiento\"",
@@ -1047,7 +1066,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:43.774Z",
+    "fecha_scraping": "2025-09-08T18:52:12.139Z",
     "confidence": 1,
     "reasons": [
       "[+3] Alojamiento: título: \"spa\"",
@@ -1064,7 +1083,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:47.948Z",
+    "fecha_scraping": "2025-09-08T18:52:16.983Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"alojamiento\"",
@@ -1078,7 +1097,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "San Juan",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:50.194Z",
+    "fecha_scraping": "2025-09-08T18:52:19.648Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1091,7 +1110,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "San Juan",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:52.556Z",
+    "fecha_scraping": "2025-09-08T18:52:22.030Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1104,7 +1123,7 @@
     "categoria": "Alojamiento",
     "provincia": "Río Negro",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:54.853Z",
+    "fecha_scraping": "2025-09-08T18:52:25.165Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"cabañas\"",
@@ -1120,7 +1139,7 @@
     "categoria": "Alojamiento",
     "provincia": "La Rioja",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:57.217Z",
+    "fecha_scraping": "2025-09-08T18:52:27.866Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1137,7 +1156,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:12:59.480Z",
+    "fecha_scraping": "2025-09-08T18:52:30.547Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1150,7 +1169,7 @@
     "categoria": "Alojamiento",
     "provincia": "Jujuy",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:01.712Z",
+    "fecha_scraping": "2025-09-08T18:52:33.177Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1167,7 +1186,7 @@
     "categoria": "Alojamiento",
     "provincia": "Entre Ríos",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:06.202Z",
+    "fecha_scraping": "2025-09-08T18:52:37.725Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"cabañas\"",
@@ -1183,7 +1202,7 @@
     "categoria": "Alojamiento",
     "provincia": "Jujuy",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:10.515Z",
+    "fecha_scraping": "2025-09-08T18:52:42.662Z",
     "confidence": 0.455,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\"",
@@ -1197,7 +1216,7 @@
     "categoria": "Alojamiento",
     "provincia": "Corrientes",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:12.975Z",
+    "fecha_scraping": "2025-09-08T18:52:45.256Z",
     "confidence": 0.294,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1217,7 +1236,7 @@
     "categoria": "Alojamiento",
     "provincia": "Chaco",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:15.337Z",
+    "fecha_scraping": "2025-09-08T18:52:47.470Z",
     "confidence": 0.388,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1227,7 +1246,9 @@
       "[+1.5] Alojamiento: detalle: \"hotel\"",
       "[+1.5] Alojamiento: detalle: \"boutique\"",
       "[+1.5] Retail / Comercios: detalle: \"boutique\"",
-      "[+1.5] Retail / Comercios: detalle: \"descuento\""
+      "[+1.5] Retail / Comercios: detalle: \"descuento\"",
+      "[+1.5] Alojamiento: url: \"hotel\"",
+      "[+1.5] Alojamiento: url: \"boutique\""
     ]
   },
   {
@@ -1237,7 +1258,7 @@
     "categoria": "Alojamiento",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:17.519Z",
+    "fecha_scraping": "2025-09-08T18:52:49.921Z",
     "confidence": 0.838,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1257,7 +1278,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:19.521Z",
+    "fecha_scraping": "2025-09-08T18:52:52.685Z",
     "confidence": 0.778,
     "reasons": [
       "[+3] Alojamiento: título: \"resort\"",
@@ -1276,7 +1297,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Santa Cruz",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:21.883Z",
+    "fecha_scraping": "2025-09-08T18:52:55.325Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1289,7 +1310,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:24.223Z",
+    "fecha_scraping": "2025-09-08T18:52:57.737Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1302,7 +1323,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:26.222Z",
+    "fecha_scraping": "2025-09-08T18:53:00.367Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1315,7 +1336,7 @@
     "categoria": "Alojamiento",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:28.583Z",
+    "fecha_scraping": "2025-09-08T18:53:02.766Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1332,7 +1353,7 @@
     "categoria": "Alojamiento",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:30.978Z",
+    "fecha_scraping": "2025-09-08T18:53:05.473Z",
     "confidence": 1,
     "reasons": [
       "[+3] Alojamiento: título: \"departamentos\"",
@@ -1347,7 +1368,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:34.586Z",
+    "fecha_scraping": "2025-09-08T18:53:09.931Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"hospedaje\"",
@@ -1363,7 +1384,7 @@
     "categoria": "Alojamiento",
     "provincia": "Misiones",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:36.948Z",
+    "fecha_scraping": "2025-09-08T18:53:12.696Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"reserva\"",
@@ -1379,7 +1400,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Misiones",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:39.312Z",
+    "fecha_scraping": "2025-09-08T18:53:15.534Z",
     "confidence": 0.778,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"paseo\"",
@@ -1398,7 +1419,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:43.594Z",
+    "fecha_scraping": "2025-09-08T18:53:19.679Z",
     "confidence": 1,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1415,7 +1436,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:45.965Z",
+    "fecha_scraping": "2025-09-08T18:53:22.155Z",
     "confidence": 1,
     "reasons": [
       "[+3] Retail / Comercios: título: \"indumentaria\"",
@@ -1431,7 +1452,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:48.253Z",
+    "fecha_scraping": "2025-09-08T18:53:24.524Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1444,7 +1465,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:50.600Z",
+    "fecha_scraping": "2025-09-08T18:53:26.820Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1457,7 +1478,7 @@
     "categoria": "Alojamiento",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:52.604Z",
+    "fecha_scraping": "2025-09-08T18:53:29.376Z",
     "confidence": 0.231,
     "reasons": [
       "[+3] Alojamiento: título: \"departamentos\"",
@@ -1467,7 +1488,9 @@
       "[+1.5] Alojamiento: detalle: \"boutique\"",
       "[+1.5] Retail / Comercios: detalle: \"boutique\"",
       "[+1.5] Retail / Comercios: detalle: \"descuento\"",
-      "[+1.5] Alojamiento: url: \"departamentos\""
+      "[+1.5] Alojamiento: url: \"departamentos\"",
+      "[+1.5] Alojamiento: url: \"boutique\"",
+      "[+1.5] Retail / Comercios: url: \"boutique\""
     ]
   },
   {
@@ -1477,7 +1500,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:54.963Z",
+    "fecha_scraping": "2025-09-08T18:53:31.689Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1494,7 +1517,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:57.325Z",
+    "fecha_scraping": "2025-09-08T18:53:34.391Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"termas\"",
@@ -1510,7 +1533,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:13:59.610Z",
+    "fecha_scraping": "2025-09-08T18:53:36.791Z",
     "confidence": 1,
     "reasons": [
       "[+3] Excursiones y Actividades: título: \"paseo\"",
@@ -1525,7 +1548,7 @@
     "categoria": "Alojamiento",
     "provincia": "Corrientes",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:03.972Z",
+    "fecha_scraping": "2025-09-08T18:53:41.502Z",
     "confidence": 0.294,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1545,7 +1568,7 @@
     "categoria": "Alojamiento",
     "provincia": "Tierra del Fuego",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:06.270Z",
+    "fecha_scraping": "2025-09-08T18:53:44.150Z",
     "confidence": 0.878,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1555,7 +1578,9 @@
       "[+1.5] Alojamiento: detalle: \"hotel\"",
       "[+1.5] Alojamiento: detalle: \"apart\"",
       "[+1.5] Alojamiento: detalle: \"apart hotel\"",
-      "[+1.5] Retail / Comercios: detalle: \"descuento\""
+      "[+1.5] Retail / Comercios: detalle: \"descuento\"",
+      "[+1.5] Alojamiento: url: \"hotel\"",
+      "[+1.5] Alojamiento: url: \"apart\""
     ]
   },
   {
@@ -1565,7 +1590,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:08.630Z",
+    "fecha_scraping": "2025-09-08T18:53:46.690Z",
     "confidence": 0.778,
     "reasons": [
       "[+3] Alojamiento: título: \"duplex\"",
@@ -1584,7 +1609,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:10.709Z",
+    "fecha_scraping": "2025-09-08T18:53:49.212Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1597,7 +1622,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "San Luis",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:13.107Z",
+    "fecha_scraping": "2025-09-08T18:53:52.148Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1610,7 +1635,7 @@
     "categoria": "Alojamiento",
     "provincia": "La Rioja",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:15.471Z",
+    "fecha_scraping": "2025-09-08T18:53:54.614Z",
     "confidence": 0.6,
     "reasons": [
       "[+3] Alojamiento: título: \"cabañas\"",
@@ -1626,7 +1651,7 @@
     "categoria": "Alojamiento",
     "provincia": "San Luis",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:17.647Z",
+    "fecha_scraping": "2025-09-08T18:53:57.282Z",
     "confidence": 0.833,
     "reasons": [
       "[+3] Alojamiento: título: \"resort\"",
@@ -1636,7 +1661,8 @@
       "[+1.5] Alojamiento: detalle: \"spa\"",
       "[+1.5] Alojamiento: detalle: \"spa & resort\"",
       "[+1.5] Retail / Comercios: detalle: \"descuento\"",
-      "[+1.5] Alojamiento: url: \"resort\""
+      "[+1.5] Alojamiento: url: \"resort\"",
+      "[+1.5] Alojamiento: url: \"spa\""
     ]
   },
   {
@@ -1646,7 +1672,7 @@
     "categoria": "Alojamiento",
     "provincia": "Santiago del Estero",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:19.649Z",
+    "fecha_scraping": "2025-09-08T18:54:00.368Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1661,9 +1687,9 @@
     "link": "https://labancaria.org/beneficios/el-altillo-parrilla-restaurant-villa-gessell",
     "imagen_url": "",
     "categoria": "Gastronomía",
-    "provincia": "Provincia desconocida",
+    "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:22.025Z",
+    "fecha_scraping": "2025-09-08T18:54:02.799Z",
     "confidence": 0.838,
     "reasons": [
       "[+5] Gastronomía: estructura del título",
@@ -1683,7 +1709,7 @@
     "categoria": "Alojamiento",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:24.280Z",
+    "fecha_scraping": "2025-09-08T18:54:05.062Z",
     "confidence": 0.76,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1700,7 +1726,7 @@
     "categoria": "Excursiones y Actividades",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:26.641Z",
+    "fecha_scraping": "2025-09-08T18:54:07.577Z",
     "confidence": 0.333,
     "reasons": [
       "[+1.5] Excursiones y Actividades: detalle: \"catamaran\"",
@@ -1715,7 +1741,7 @@
     "categoria": "Gastronomía",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:29.003Z",
+    "fecha_scraping": "2025-09-08T18:54:09.992Z",
     "confidence": 0.838,
     "reasons": [
       "[+5] Gastronomía: estructura del título",
@@ -1735,7 +1761,7 @@
     "categoria": "Gastronomía",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:31.121Z",
+    "fecha_scraping": "2025-09-08T18:54:12.658Z",
     "confidence": 0.333,
     "reasons": [
       "[+3] Gastronomía: título: \"cocina\"",
@@ -1750,9 +1776,9 @@
     "link": "https://labancaria.org/beneficios/hotel-bagu-foz-de-iguazu-brasil",
     "imagen_url": "",
     "categoria": "Alojamiento",
-    "provincia": "Misiones",
+    "provincia": "Brasil",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:35.584Z",
+    "fecha_scraping": "2025-09-08T18:54:16.958Z",
     "confidence": 0.818,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1770,7 +1796,7 @@
     "categoria": "Alojamiento",
     "provincia": "Tierra del Fuego",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:37.945Z",
+    "fecha_scraping": "2025-09-08T18:54:19.513Z",
     "confidence": 0.818,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1788,7 +1814,7 @@
     "categoria": "Alojamiento",
     "provincia": "Misiones",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:40.077Z",
+    "fecha_scraping": "2025-09-08T18:54:22.008Z",
     "confidence": 0.833,
     "reasons": [
       "[+5] Alojamiento: estructura del título",
@@ -1807,7 +1833,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:43.912Z",
+    "fecha_scraping": "2025-09-08T18:54:24.392Z",
     "confidence": 0,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"alojamiento\"",
@@ -1821,7 +1847,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Tierra del Fuego",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:46.277Z",
+    "fecha_scraping": "2025-09-08T18:54:26.854Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1834,7 +1860,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:48.523Z",
+    "fecha_scraping": "2025-09-08T18:54:29.286Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1847,7 +1873,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Chaco",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:50.690Z",
+    "fecha_scraping": "2025-09-08T18:54:31.741Z",
     "confidence": 0,
     "reasons": []
   },
@@ -1858,7 +1884,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Santa Fe",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:53.002Z",
+    "fecha_scraping": "2025-09-08T18:54:34.269Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1871,7 +1897,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Corrientes",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:55.399Z",
+    "fecha_scraping": "2025-09-08T18:54:36.788Z",
     "confidence": 0,
     "reasons": []
   },
@@ -1882,7 +1908,7 @@
     "categoria": "Alojamiento",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:14:57.761Z",
+    "fecha_scraping": "2025-09-08T18:54:39.350Z",
     "confidence": 0,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"alojamiento\"",
@@ -1896,7 +1922,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:00.063Z",
+    "fecha_scraping": "2025-09-08T18:54:41.752Z",
     "confidence": 0,
     "reasons": []
   },
@@ -1907,7 +1933,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Córdoba",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:02.945Z",
+    "fecha_scraping": "2025-09-08T18:54:44.151Z",
     "confidence": 0,
     "reasons": []
   },
@@ -1918,7 +1944,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Chubut",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:05.505Z",
+    "fecha_scraping": "2025-09-08T18:54:46.613Z",
     "confidence": 0,
     "reasons": []
   },
@@ -1929,7 +1955,7 @@
     "categoria": "Alojamiento",
     "provincia": "Provincia desconocida",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:08.019Z",
+    "fecha_scraping": "2025-09-08T18:54:49.016Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"hotel\"",
@@ -1944,7 +1970,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:10.733Z",
+    "fecha_scraping": "2025-09-08T18:54:51.513Z",
     "confidence": 0,
     "reasons": []
   },
@@ -1955,7 +1981,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Santiago del Estero",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:13.095Z",
+    "fecha_scraping": "2025-09-08T18:54:54.085Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1968,7 +1994,7 @@
     "categoria": "Categoría desconocida",
     "provincia": "Mendoza",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:15.924Z",
+    "fecha_scraping": "2025-09-08T18:54:56.549Z",
     "confidence": 0,
     "reasons": []
   },
@@ -1979,7 +2005,7 @@
     "categoria": "Retail / Comercios",
     "provincia": "Tierra del Fuego",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:18.443Z",
+    "fecha_scraping": "2025-09-08T18:54:58.970Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Retail / Comercios: detalle: \"descuento\""
@@ -1992,7 +2018,7 @@
     "categoria": "Alojamiento",
     "provincia": "Buenos Aires",
     "descripcion": "",
-    "fecha_scraping": "2025-09-05T02:15:21.078Z",
+    "fecha_scraping": "2025-09-08T18:55:01.631Z",
     "confidence": 1,
     "reasons": [
       "[+1.5] Alojamiento: detalle: \"hotel\""

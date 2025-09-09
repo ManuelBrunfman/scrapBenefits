@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beneficios Dashboard – Editor</title>
+<style>
+  :root{
+    --bg:#0b0b0d; --panel:#121216; --muted:#9aa0a6; --text:#e6e6e6;
+    --primary:#6ea8fe; --border:#1f1f25; --accent:#2a2a33;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  }
+  .app{
+    width:100%; max-width:100%; margin:0 auto; padding:16px;
+  }
+  header{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:16px; background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    min-height:120px; /* alto sugerido */
+  }
+  header h1{margin:0 0 6px 0; font-size:20px}
+  header .muted{color:var(--muted); font-size:12px}
+  .row{display:flex; flex-wrap:wrap; gap:12px}
+  .grow{flex:1 1 240px}
+  .btn, .btn-outline, select, input, textarea{
+    border-radius:10px; border:1px solid var(--border); background:#11131a; color:var(--text);
+    padding:8px 10px; font-size:14px;
+  }
+  .btn{background:linear-gradient(180deg,#1c2333,#141824); border-color:#121a2c}
+  .btn:hover{filter:brightness(1.05)}
+  .btn-outline{background:var(--panel)}
+  .toolbar{
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+    margin:14px 0;
+  }
+  .toolbar .left, .toolbar .right{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+  .chip{font-size:12px; color:var(--muted)}
+  .table-wrap{
+    width:100%; overflow:auto; background:var(--panel);
+    border:1px solid var(--border); border-radius:14px;
+  }
+  table{
+    border-collapse:separate; border-spacing:0; width:1920px; /* ancho grande para que entren todas las columnas en 1080 de viewport con scroll si hace falta */
+    table-layout:fixed;
+  }
+  thead th{
+    position:sticky; top:0; background:#151821; z-index:1;
+    color:#aab2c0; font-weight:600; text-align:left; padding:10px; border-bottom:1px solid var(--border);
+  }
+  tbody td{padding:10px; border-top:1px solid var(--border); vertical-align:top}
+  .w-title{width:420px}
+  .w-link{width:280px}
+  .w-img{width:220px}
+  .w-cat{width:210px}
+  .w-prov{width:210px}
+  .w-conf{width:110px}
+  .w-desc{width:360px}
+  .w-date{width:200px}
+  .w-actions{width:160px}
+  .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px}
+  .tag{border:1px solid var(--border); background:#0d0f15; color:#b8c0cc; font-size:11px; padding:2px 6px; border-radius:999px}
+  .actions{display:flex; gap:6px}
+  .small{font-size:12px}
+  .muted{color:var(--muted)}
+  .hidden{display:none}
+  .input-number{width:100%}
+  /* Inputs anchos en filtros */
+  .filters{display:grid; grid-template-columns: 1.2fr 0.9fr 0.9fr 0.6fr; gap:10px}
+  @media (max-width:1200px){
+    table{width:1600px}
+  }
+  @media (max-width:900px){
+    table{width:1300px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <h1>Beneficios Dashboard</h1>
+      <div class="muted">Filtrar • Editar • Exportar — 1080-friendly y responsivo</div>
+      <div class="row" style="margin-top:8px;">
+        <button class="btn-outline" id="btnLoadSample">Cargar ejemplo</button>
+        <label class="btn-outline" for="fileInput">Importar JSON/JSONL</label>
+        <input id="fileInput" type="file" accept=".json,.jsonl,.ndjson" class="hidden" />
+        <button class="btn" id="btnExportJSON">Export JSON</button>
+        <button class="btn" id="btnExportJSONL">Export JSONL</button>
+        <label class="btn-outline"><input type="checkbox" id="chkReasons" /> Mostrar reasons</label>
+      </div>
+    </div>
+    <div class="grow">
+      <div class="filters">
+        <input id="txtSearch" placeholder="Buscar por título, descripción, link o reason…" />
+        <select id="selCat"></select>
+        <select id="selProv"></select>
+        <div class="row" style="gap:6px">
+          <input id="minConf" type="number" step="0.01" min="0" max="1" class="input-number" value="0" title="Confidence mín." />
+          <input id="maxConf" type="number" step="0.01" min="0" max="1" class="input-number" value="1" title="Confidence máx." />
+        </div>
+      </div>
+      <div class="row" style="margin-top:8px; gap:8px">
+        <button class="btn-outline" id="btnReset">Limpiar filtros</button>
+        <select id="bulkCat"><option value="">Cat. masiva…</option></select>
+        <select id="bulkProv"><option value="">Prov. masiva…</option></select>
+        <span class="chip" id="lblCount"></span>
+        <span class="grow"></span>
+        <label class="chip">Paginación:
+          <select id="selPageSize">
+            <option>10</option><option>20</option><option>50</option><option>100</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <div class="table-wrap" style="margin-top:14px;">
+    <table>
+      <thead>
+        <tr>
+          <th class="w-title">Título</th>
+          <th class="w-link">Link</th>
+          <th class="w-img">Imagen</th>
+          <th class="w-cat">Categoría</th>
+          <th class="w-prov">Provincia</th>
+          <th class="w-conf">Conf.</th>
+          <th class="w-desc">Descripción</th>
+          <th class="w-date">Fecha</th>
+          <th class="w-actions">Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="toolbar">
+    <div class="left small muted" id="lblPage">Página 1</div>
+    <div class="right">
+      <button class="btn-outline" id="btnPrev">Prev</button>
+      <button class="btn-outline" id="btnNext">Next</button>
+      <button class="btn" id="btnAdd">Agregar fila</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ======== Datos de dominio ======== */
+const CATEGORY_ORDER = [
+  "Alojamiento","Excursiones y Actividades","Transporte","Gastronomía",
+  "Retail / Comercios","Deportes y Gimnasios","Salud","Educación","Servicios","Categoría desconocida"
+];
+const PROVINCIAS = [
+  "Buenos Aires","CABA","Catamarca","Chaco","Chubut","Córdoba","Corrientes","Entre Ríos","Formosa","Jujuy",
+  "La Pampa","La Rioja","Mendoza","Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz",
+  "Santa Fe","Santiago del Estero","Tierra del Fuego","Tucumán","Nacional","Provincia desconocida"
+];
+
+/* ======== Helpers ======== */
+const $ = sel => document.querySelector(sel);
+const $$ = sel => Array.from(document.querySelectorAll(sel));
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[m]));
+const normalize = (s="") => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
+const clamp01 = (v, fb=0)=>{const n=parseFloat(v); if(Number.isNaN(n))return fb; return Math.max(0,Math.min(1,n));}
+const nowIso = ()=>new Date().toISOString();
+function downloadFile(filename, content, mime="application/json"){
+  const blob = new Blob([content], {type:mime+";charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href=url; a.download=filename; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+function toJSONL(arr){ return arr.map(o => JSON.stringify(o)).join("\n") + (arr.length ? "\n" : ""); }
+
+/* ======== Estado ======== */
+let state = {
+  rows: [],        // fuente canónica (con __id)
+  q: "", cat: "", prov: "", confMin: 0, confMax: 1,
+  page: 1, pageSize: 10, showReasons: false
+};
+let __id_seq = 1;
+
+/* ======== Persistencia ======== */
+function saveLocal(){ localStorage.setItem("beneficios_dashboard_cache_v2", JSON.stringify(state.rows)); }
+function loadLocal(){
+  try{
+    const raw = localStorage.getItem("beneficios_dashboard_cache_v2");
+    if(!raw) return;
+    const data = JSON.parse(raw);
+    state.rows = data.map(row => row && row.__id ? row : {...row, __id: String(__id_seq++)});
+  }catch{}
+}
+
+/* ======== Inicialización de filtros y combos ======== */
+function fillCombos(){
+  const selCat = $("#selCat"); selCat.innerHTML = `<option value="">Todas las categorías</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
+  const selProv = $("#selProv"); selProv.innerHTML = `<option value="">Todas las provincias</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
+  $("#bulkCat").innerHTML = `<option value="">Cat. masiva…</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
+  $("#bulkProv").innerHTML = `<option value="">Prov. masiva…</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
+}
+
+/* ======== Carga de ejemplo ======== */
+function loadSample(){
+  const sample = [
+    {
+      __id: String(__id_seq++),
+      titulo: "Hertz – Alquiler de autos para afiliadxs",
+      link: "https://labancaria.org/beneficios/hertz-descuento",
+      imagen_url: "",
+      categoria: "Transporte",
+      provincia: "Provincia desconocida",
+      descripcion: "Descuento nacional con Hertz",
+      fecha_scraping: nowIso(),
+      confidence: 0.85,
+      reasons: ["[+4] Transporte: marca/entidad (hertz)","url contiene /beneficios/"]
+    },
+    {
+      __id: String(__id_seq++),
+      titulo: "Megatlon. Convenio para afiliadas y afiliados",
+      link: "https://labancaria.org/beneficios/megatlon-convenio-para-afiliadas-y-afiliados",
+      imagen_url: "",
+      categoria: "Deportes y Gimnasios",
+      provincia: "Provincia desconocida",
+      descripcion: "",
+      fecha_scraping: nowIso(),
+      confidence: 1,
+      reasons: ["[+3] Deportes y Gimnasios: título \"megatlon\"","+ marca/entidad"]
+    }
+  ];
+  state.rows = sample;
+  state.page = 1;
+  saveLocal();
+  render();
+}
+
+/* ======== Import ======== */
+$("#fileInput").addEventListener("change", async (e)=>{
+  const file = e.target.files?.[0]; if(!file) return;
+  const text = await file.text();
+  let parsed;
+  try{
+    const trimmed = text.trim();
+    if(trimmed.includes("\n") && trimmed.split("\n").every(ln=>!ln.trim() || ln.trim().startsWith("{"))){
+      parsed = trimmed.split("\n").filter(Boolean).map(JSON.parse);
+    }else{
+      parsed = JSON.parse(trimmed);
+    }
+  }catch(err){
+    alert("Archivo inválido: " + err.message);
+    e.target.value = "";
+    return;
+  }
+  state.rows = parsed.map(r => ({ __id: String(__id_seq++), ...r }));
+  state.page = 1;
+  saveLocal();
+  render();
+  e.target.value = "";
+});
+
+/* ======== Export ======== */
+$("#btnExportJSON").addEventListener("click", ()=> downloadFile("beneficios_editados.json", JSON.stringify(state.rows,null,2)));
+$("#btnExportJSONL").addEventListener("click", ()=> downloadFile("beneficios_editados.jsonl", toJSONL(state.rows), "application/x-ndjson"));
+
+/* ======== Filtros ======== */
+$("#txtSearch").addEventListener("input", (e)=>{ state.q=e.target.value||""; state.page=1; render(); });
+$("#selCat").addEventListener("change", (e)=>{ state.cat=e.target.value||""; state.page=1; render(); });
+$("#selProv").addEventListener("change", (e)=>{ state.prov=e.target.value||""; state.page=1; render(); });
+$("#minConf").addEventListener("change", (e)=>{ state.confMin=clamp01(e.target.value,0); state.page=1; render(); });
+$("#maxConf").addEventListener("change", (e)=>{ state.confMax=clamp01(e.target.value,1); state.page=1; render(); });
+$("#chkReasons").addEventListener("change", (e)=>{ state.showReasons = !!e.target.checked; render(); });
+
+$("#btnReset").addEventListener("click", ()=>{
+  state.q=""; state.cat=""; state.prov=""; state.confMin=0; state.confMax=1; state.page=1;
+  $("#txtSearch").value=""; $("#selCat").value=""; $("#selProv").value=""; $("#minConf").value="0"; $("#maxConf").value="1";
+  render();
+});
+
+/* ======== Bulk ======== */
+$("#bulkCat").addEventListener("change",(e)=>{
+  const v = e.target.value; if(!v) return;
+  state.rows = state.rows.map(r => ({...r, categoria:v}));
+  saveLocal(); render();
+  e.target.value="";
+});
+$("#bulkProv").addEventListener("change",(e)=>{
+  const v = e.target.value; if(!v) return;
+  state.rows = state.rows.map(r => ({...r, provincia:v}));
+  saveLocal(); render();
+  e.target.value="";
+});
+
+/* ======== Paginación ======== */
+$("#selPageSize").addEventListener("change",(e)=>{
+  const n = parseInt(e.target.value,10)||10;
+  state.pageSize=n; state.page=1; render();
+});
+$("#btnPrev").addEventListener("click", ()=>{ state.page=Math.max(1, state.page-1); render(); });
+$("#btnNext").addEventListener("click", ()=>{ const pages = getPages(); state.page=Math.min(pages, state.page+1); render(); });
+
+/* ======== CRUD ======== */
+$("#btnAdd").addEventListener("click", ()=>{
+  state.rows = [{
+    __id:String(__id_seq++),
+    titulo:"", link:"", imagen_url:"",
+    categoria:"Categoría desconocida", provincia:"Provincia desconocida",
+    descripcion:"", fecha_scraping: nowIso(),
+    confidence:0.5, reasons:[]
+  }, ...state.rows];
+  saveLocal(); render();
+});
+
+/* ======== Render ======== */
+function filterRows(){
+  let rows = [...state.rows];
+  if(state.q){
+    const nq = normalize(state.q);
+    rows = rows.filter(r =>
+      normalize(r.titulo||"").includes(nq) ||
+      normalize(r.descripcion||"").includes(nq) ||
+      normalize(r.link||"").includes(nq) ||
+      (r.reasons||[]).some(rx => normalize(rx).includes(nq))
+    );
+  }
+  if(state.cat) rows = rows.filter(r => r.categoria===state.cat);
+  if(state.prov) rows = rows.filter(r => r.provincia===state.prov);
+  rows = rows.filter(r => {
+    const c = typeof r.confidence==="number" ? r.confidence : parseFloat(r.confidence||0);
+    return c>=state.confMin && c<=state.confMax;
+  });
+  return rows;
+}
+function getPages(){
+  const total = filterRows().length;
+  return Math.max(1, Math.ceil(total / state.pageSize));
+}
+function paginateRows(rows){
+  const start = (state.page-1)*state.pageSize;
+  return rows.slice(start, start+state.pageSize);
+}
+
+function selectOptions(list, current){
+  return list.map(v=>`<option value="${esc(v)}"${v===current?' selected':''}>${esc(v)}</option>`).join("");
+}
+
+function render(){
+  const all = filterRows();
+  const pages = getPages();
+  if(state.page>pages) state.page=pages;
+  const pageRows = paginateRows(all);
+
+  $("#lblCount").textContent = `${all.length} resultados`;
+  $("#lblPage").textContent = `Página ${state.page} de ${pages}`;
+
+  const tbody = $("#tbody");
+  tbody.innerHTML = pageRows.map(r => {
+    return `
+      <tr data-id="${esc(r.__id)}">
+        <td class="w-title">
+          <input class="cell cell-title" value="${esc(r.titulo||"")}" placeholder="Título" />
+          ${state.showReasons ? `<div class="tags">${(r.reasons||[]).slice(0,6).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
+        </td>
+        <td class="w-link">
+          <input class="cell cell-link" value="${esc(r.link||"")}" placeholder="https://…" />
+        </td>
+        <td class="w-img">
+          <input class="cell cell-img" value="${esc(r.imagen_url||"")}" placeholder="https://…" />
+        </td>
+        <td class="w-cat">
+          <select class="cell cell-categoria">
+            ${selectOptions(CATEGORY_ORDER, r.categoria||"")}
+          </select>
+        </td>
+        <td class="w-prov">
+          <select class="cell cell-provincia">
+            ${selectOptions(PROVINCIAS, r.provincia||"")}
+          </select>
+        </td>
+        <td class="w-conf">
+          <input type="number" class="cell cell-confidence" step="0.01" min="0" max="1" value="${typeof r.confidence==="number"?r.confidence:(parseFloat(r.confidence)||0)}" />
+        </td>
+        <td class="w-desc">
+          <textarea class="cell cell-desc" rows="2" placeholder="Descripción">${esc(r.descripcion||"")}</textarea>
+        </td>
+        <td class="w-date">
+          <input class="cell cell-fecha" value="${esc(r.fecha_scraping||"")}" />
+        </td>
+        <td class="w-actions">
+          <div class="actions">
+            <button class="btn-outline act-dup">Duplicar</button>
+            <button class="btn-outline act-del">Eliminar</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join("");
+}
+
+/* ======== Edición por delegación (ACTUALIZA POR ID) ======== */
+document.addEventListener("change",(e)=>{
+  const tr = e.target.closest("tr[data-id]"); if(!tr) return;
+  const id = tr.getAttribute("data-id");
+  const row = state.rows.find(r => r.__id === id); if(!row) return;
+
+  if(e.target.classList.contains("cell-title")) row.titulo = e.target.value;
+  if(e.target.classList.contains("cell-link")) row.link = e.target.value;
+  if(e.target.classList.contains("cell-img")) row.imagen_url = e.target.value;
+  if(e.target.classList.contains("cell-categoria")) row.categoria = e.target.value; // FIX: guarda categoría
+  if(e.target.classList.contains("cell-provincia")) row.provincia = e.target.value; // FIX: guarda provincia
+  if(e.target.classList.contains("cell-confidence")) row.confidence = clamp01(e.target.value, row.confidence||0);
+  if(e.target.classList.contains("cell-desc")) row.descripcion = e.target.value;
+  if(e.target.classList.contains("cell-fecha")) row.fecha_scraping = e.target.value;
+
+  saveLocal();
+  render(); // re-render para reflejar selección (ya queda guardado)
+});
+
+document.addEventListener("input",(e)=>{
+  // Para inputs/textarea que quieras que guarden "en vivo"
+  if(!e.target.classList.contains("cell")) return;
+  const tr = e.target.closest("tr[data-id]"); if(!tr) return;
+  const id = tr.getAttribute("data-id");
+  const row = state.rows.find(r => r.__id === id); if(!row) return;
+
+  if(e.target.classList.contains("cell-confidence")){
+    row.confidence = clamp01(e.target.value, row.confidence||0);
+  }else if(e.target.classList.contains("cell-title")){
+    row.titulo = e.target.value;
+  }else if(e.target.classList.contains("cell-link")){
+    row.link = e.target.value;
+  }else if(e.target.classList.contains("cell-img")){
+    row.imagen_url = e.target.value;
+  }else if(e.target.classList.contains("cell-desc")){
+    row.descripcion = e.target.value;
+  }else if(e.target.classList.contains("cell-fecha")){
+    row.fecha_scraping = e.target.value;
+  }else{
+    return;
+  }
+  saveLocal();
+});
+
+document.addEventListener("click",(e)=>{
+  const tr = e.target.closest("tr[data-id]");
+  if(e.target.classList.contains("act-del") && tr){
+    const id = tr.getAttribute("data-id");
+    state.rows = state.rows.filter(r=>r.__id!==id);
+    saveLocal(); render();
+  }
+  if(e.target.classList.contains("act-dup") && tr){
+    const id = tr.getAttribute("data-id");
+    const row = state.rows.find(r=>r.__id===id);
+    if(row){
+      const copy = {...row, __id:String(__id_seq++), fecha_scraping: nowIso()};
+      state.rows = [copy, ...state.rows];
+      saveLocal(); render();
+    }
+  }
+});
+
+/* ======== Botones principales ======== */
+$("#btnLoadSample").addEventListener("click", loadSample);
+
+/* ======== Boot ======== */
+fillCombos();
+loadLocal();
+render();
+</script>
+</body>
+</html>
