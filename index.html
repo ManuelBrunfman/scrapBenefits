@@ -1,81 +1,219 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Beneficios Dashboard – Editor</title>
+<title>Beneficios Dashboard - Editor</title>
 <style>
   :root{
-    --bg:#0b0b0d; --panel:#121216; --muted:#9aa0a6; --text:#e6e6e6;
-    --primary:#6ea8fe; --border:#1f1f25; --accent:#2a2a33;
+    --bg:#f5f7fb;
+    --panel:#ffffff;
+    --muted:#6b7280;
+    --text:#101828;
+    --primary:#2563eb;
+    --border:#d1d8e5;
+    --accent:#eef2ff;
+    --shadow:0 12px 24px rgba(15,23,42,0.08);
   }
-  *{box-sizing:border-box}
-  html,body{height:100%}
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
   body{
-    margin:0;background:var(--bg);color:var(--text);
-    font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font:14px/1.45 "Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,"Roboto","Helvetica Neue",sans-serif;
   }
   .app{
-    width:100%; max-width:100%; margin:0 auto; padding:16px;
+    width:100%;
+    max-width:100%;
+    margin:0 auto;
+    padding:20px;
   }
   header{
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-    padding:16px; background:var(--panel); border:1px solid var(--border); border-radius:14px;
-    min-height:120px; /* alto sugerido */
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+    padding:24px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow);
   }
-  header h1{margin:0 0 6px 0; font-size:20px}
-  header .muted{color:var(--muted); font-size:12px}
-  .row{display:flex; flex-wrap:wrap; gap:12px}
-  .grow{flex:1 1 240px}
+  header h1{
+    margin:0 0 6px 0;
+    font-size:24px;
+    font-weight:600;
+  }
+  header .muted{
+    color:var(--muted);
+    font-size:13px;
+  }
+  .row{display:flex; flex-wrap:wrap; gap:12px;}
+  .grow{flex:1 1 240px;}
   .btn, .btn-outline, select, input, textarea{
-    border-radius:10px; border:1px solid var(--border); background:#11131a; color:var(--text);
-    padding:8px 10px; font-size:14px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:#fff;
+    color:var(--text);
+    padding:9px 12px;
+    font-size:14px;
+    transition:background 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease;
   }
-  .btn{background:linear-gradient(180deg,#1c2333,#141824); border-color:#121a2c}
-  .btn:hover{filter:brightness(1.05)}
-  .btn-outline{background:var(--panel)}
+  .btn{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+    font-weight:600;
+  }
+  .btn:hover{filter:brightness(1.05);}
+  .btn-outline{
+    background:var(--panel);
+    color:var(--primary);
+    font-weight:600;
+  }
+  .btn-outline:hover{
+    background:var(--accent);
+  }
+  select:focus, input:focus, textarea:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(37,99,235,0.18);
+  }
+  textarea{
+    resize:vertical;
+    min-height:70px;
+  }
   .toolbar{
-    display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
-    margin:14px 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    margin:16px 0 0;
+    padding:16px 20px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
   }
-  .toolbar .left, .toolbar .right{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
-  .chip{font-size:12px; color:var(--muted)}
+  .chip{
+    font-size:13px;
+    color:var(--muted);
+  }
   .table-wrap{
-    width:100%; overflow:auto; background:var(--panel);
-    border:1px solid var(--border); border-radius:14px;
+    width:100%;
+    overflow:auto;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    margin-top:18px;
   }
   table{
-    border-collapse:separate; border-spacing:0; width:1920px; /* ancho grande para que entren todas las columnas en 1080 de viewport con scroll si hace falta */
+    border-collapse:separate;
+    border-spacing:0;
+    width:1920px;
     table-layout:fixed;
   }
   thead th{
-    position:sticky; top:0; background:#151821; z-index:1;
-    color:#aab2c0; font-weight:600; text-align:left; padding:10px; border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:#eef2ff;
+    z-index:1;
+    color:#1f2937;
+    font-weight:600;
+    text-align:left;
+    padding:12px 14px;
+    border-bottom:1px solid var(--border);
   }
-  tbody td{padding:10px; border-top:1px solid var(--border); vertical-align:top}
-  .w-title{width:420px}
-  .w-link{width:280px}
-  .w-img{width:220px}
-  .w-cat{width:210px}
-  .w-prov{width:210px}
-  .w-conf{width:110px}
-  .w-desc{width:360px}
-  .w-date{width:200px}
-  .w-actions{width:160px}
-  .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px}
-  .tag{border:1px solid var(--border); background:#0d0f15; color:#b8c0cc; font-size:11px; padding:2px 6px; border-radius:999px}
-  .actions{display:flex; gap:6px}
-  .small{font-size:12px}
-  .muted{color:var(--muted)}
-  .hidden{display:none}
-  .input-number{width:100%}
-  /* Inputs anchos en filtros */
-  .filters{display:grid; grid-template-columns: 1.2fr 0.9fr 0.9fr 0.6fr; gap:10px}
+  tbody td{
+    padding:14px;
+    border-top:1px solid var(--border);
+    vertical-align:top;
+    background:var(--panel);
+  }
+  .w-title{width:420px;}
+  .w-link{width:280px;}
+  .w-img{width:240px;}
+  .w-cat{width:210px;}
+  .w-prov{width:210px;}
+  .w-conf{width:130px;}
+  .w-desc{width:360px;}
+  .w-date{width:200px;}
+  .w-actions{width:160px;}
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:8px;
+  }
+  .tag{
+    border:1px solid var(--border);
+    background:var(--accent);
+    color:#344054;
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:999px;
+  }
+  .actions{display:flex; gap:8px;}
+  .small{font-size:12px;}
+  .muted{color:var(--muted);}
+  .hidden{display:none;}
+  tr.is-editing td{
+    background:var(--accent);
+    box-shadow:inset 0 0 0 2px rgba(37,99,235,0.25);
+  }
+  .input-number{width:100%;}
+  .filters{
+    display:grid;
+    grid-template-columns:1.2fr 0.9fr 0.9fr 0.6fr;
+    gap:10px;
+  }
+  .img-cell{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .img-preview{
+    flex:0 0 112px;
+    width:112px;
+    height:96px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:#eef2ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .img-preview:not(.is-empty){
+    box-shadow:0 6px 12px rgba(15,23,42,0.08);
+    border-color:#c7d2fe;
+  }
+  .img-preview img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    background:#fff;
+  }
+  .img-preview.is-empty{
+    border:1px dashed var(--border);
+    color:var(--muted);
+    background:transparent;
+    font-size:11px;
+    text-align:center;
+    padding:8px;
+    min-height:64px;
+    line-height:1.3;
+  }
+  .img-placeholder{display:block;}
   @media (max-width:1200px){
-    table{width:1600px}
+    table{width:1600px;}
   }
   @media (max-width:900px){
-    table{width:1300px}
+    table{width:1300px;}
   }
 </style>
 </head>
@@ -84,33 +222,35 @@
   <header>
     <div>
       <h1>Beneficios Dashboard</h1>
-      <div class="muted">Filtrar • Editar • Exportar — 1080-friendly y responsivo</div>
-      <div class="row" style="margin-top:8px;">
+      <div class="muted">Filtrar / Editar / Exportar en un entorno claro</div>
+      <div class="row" style="margin-top:10px;">
         <button class="btn-outline" id="btnLoadSample">Cargar ejemplo</button>
         <label class="btn-outline" for="fileInput">Importar JSON/JSONL</label>
         <input id="fileInput" type="file" accept=".json,.jsonl,.ndjson" class="hidden" />
-        <button class="btn" id="btnExportJSON">Export JSON</button>
-        <button class="btn" id="btnExportJSONL">Export JSONL</button>
+        <button class="btn" id="btnExportJSON">Exportar como...</button>
+        <button class="btn" id="btnExportJSONL">Exportar JSONL</button>
+        <span class="chip hidden" id="lblExportStatus"></span>
         <label class="btn-outline"><input type="checkbox" id="chkReasons" /> Mostrar reasons</label>
+        <span class="grow"></span>
       </div>
     </div>
     <div class="grow">
       <div class="filters">
-        <input id="txtSearch" placeholder="Buscar por título, descripción, link o reason…" />
+        <input id="txtSearch" placeholder="Buscar por titulo, descripcion, link o reason..." />
         <select id="selCat"></select>
         <select id="selProv"></select>
         <div class="row" style="gap:6px">
-          <input id="minConf" type="number" step="0.01" min="0" max="1" class="input-number" value="0" title="Confidence mín." />
-          <input id="maxConf" type="number" step="0.01" min="0" max="1" class="input-number" value="1" title="Confidence máx." />
+          <input id="minConf" type="number" step="0.01" min="0" max="1" class="input-number" value="0" title="Confidence min." />
+          <input id="maxConf" type="number" step="0.01" min="0" max="1" class="input-number" value="1" title="Confidence max." />
         </div>
       </div>
-      <div class="row" style="margin-top:8px; gap:8px">
+      <div class="row" style="margin-top:10px; gap:10px">
         <button class="btn-outline" id="btnReset">Limpiar filtros</button>
-        <select id="bulkCat"><option value="">Cat. masiva…</option></select>
-        <select id="bulkProv"><option value="">Prov. masiva…</option></select>
+        <select id="bulkCat"><option value="">Categoria masiva...</option></select>
+        <select id="bulkProv"><option value="">Provincia masiva...</option></select>
         <span class="chip" id="lblCount"></span>
         <span class="grow"></span>
-        <label class="chip">Paginación:
+        <label class="chip">Paginacion:
           <select id="selPageSize">
             <option>10</option><option>20</option><option>50</option><option>100</option>
           </select>
@@ -119,14 +259,14 @@
     </div>
   </header>
 
-  <div class="table-wrap" style="margin-top:14px;">
+  <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th class="w-title">Título</th>
+          <th class="w-title">Titulo</th>
           <th class="w-link">Link</th>
           <th class="w-img">Imagen</th>
-          <th class="w-cat">Categoría</th>
+          <th class="w-cat">Categoria</th>
           <th class="w-prov">Provincia</th>
           <th class="w-conf">Conf.</th>
           <th class="w-desc">Descripción</th>
@@ -139,8 +279,8 @@
   </div>
 
   <div class="toolbar">
-    <div class="left small muted" id="lblPage">Página 1</div>
-    <div class="right">
+    <div class="small muted" id="lblPage">Pagina 1</div>
+    <div class="actions">
       <button class="btn-outline" id="btnPrev">Prev</button>
       <button class="btn-outline" id="btnNext">Next</button>
       <button class="btn" id="btnAdd">Agregar fila</button>
@@ -163,42 +303,105 @@ const PROVINCIAS = [
 /* ======== Helpers ======== */
 const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[m]));
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const normalize = (s="") => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
-const clamp01 = (v, fb=0)=>{const n=parseFloat(v); if(Number.isNaN(n))return fb; return Math.max(0,Math.min(1,n));}
+const clamp01 = (v, fb=0)=>{const n=parseFloat(v); if(Number.isNaN(n))return fb; return Math.max(0,Math.min(1,n));};
 const nowIso = ()=>new Date().toISOString();
+const MAX_TAGS = 6;
+const exportStatusEl = document.getElementById('lblExportStatus');
+
+function setExportStatus(message = '', tone = 'muted'){
+  if (!exportStatusEl) return;
+  if (message){
+    exportStatusEl.textContent = message;
+    exportStatusEl.classList.remove('hidden');
+  } else {
+    exportStatusEl.textContent = '';
+    exportStatusEl.classList.add('hidden');
+  }
+  if (tone === 'success') exportStatusEl.style.color = '#15803d';
+  else if (tone === 'error') exportStatusEl.style.color = '#b91c1c';
+  else exportStatusEl.style.color = 'var(--muted)';
+}
+
 function downloadFile(filename, content, mime="application/json"){
   const blob = new Blob([content], {type:mime+";charset=utf-8"});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement("a"); a.href=url; a.download=filename; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 }
 function toJSONL(arr){ return arr.map(o => JSON.stringify(o)).join("\n") + (arr.length ? "\n" : ""); }
+function dedupeRows(list){
+  const seen = new Set();
+  const clean = [];
+  for(const row of list){
+    if(!row || row.__id == null) continue;
+    if(seen.has(row.__id)) continue;
+    seen.add(row.__id);
+    clean.push(row);
+  }
+  return clean;
+}
+function syncIdSequence(rows){
+  let maxId = 0;
+  for(const row of rows){
+    const value = parseInt(row && row.__id, 10);
+    if(Number.isFinite(value) && value > maxId){
+      maxId = value;
+    }
+  }
+  __id_seq = Math.max(__id_seq, maxId + 1);
+}
 
 /* ======== Estado ======== */
 let state = {
-  rows: [],        // fuente canónica (con __id)
+  rows: [],
   q: "", cat: "", prov: "", confMin: 0, confMax: 1,
-  page: 1, pageSize: 10, showReasons: false
+  page: 1, pageSize: 10, showReasons: false,
+  editingId: null
 };
 let __id_seq = 1;
 
 /* ======== Persistencia ======== */
-function saveLocal(){ localStorage.setItem("beneficios_dashboard_cache_v2", JSON.stringify(state.rows)); }
+function saveLocal(){
+  state.rows = dedupeRows(state.rows);
+  syncIdSequence(state.rows);
+  localStorage.setItem("beneficios_dashboard_cache_v3", JSON.stringify(state.rows));
+  localStorage.removeItem("beneficios_dashboard_cache_v2");
+}
 function loadLocal(){
   try{
-    const raw = localStorage.getItem("beneficios_dashboard_cache_v2");
+    let raw = localStorage.getItem("beneficios_dashboard_cache_v3");
+    let usedLegacy = false;
+    if(!raw){
+      raw = localStorage.getItem("beneficios_dashboard_cache_v2");
+      usedLegacy = !!raw;
+    }
     if(!raw) return;
     const data = JSON.parse(raw);
-    state.rows = data.map(row => row && row.__id ? row : {...row, __id: String(__id_seq++)});
-  }catch{}
+    state.rows = dedupeRows((Array.isArray(data) ? data : []).map(row => row && row.__id ? row : {...row, __id: String(__id_seq++)}));
+    syncIdSequence(state.rows);
+    if(usedLegacy){
+      saveLocal();
+    }
+  }catch(err){
+    console.error("No se pudo cargar el cache local:", err);
+  }
 }
 
-/* ======== Inicialización de filtros y combos ======== */
+/* ======== Inicializaciï¿½n de filtros y combos ======== */
 function fillCombos(){
-  const selCat = $("#selCat"); selCat.innerHTML = `<option value="">Todas las categorías</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
-  const selProv = $("#selProv"); selProv.innerHTML = `<option value="">Todas las provincias</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
-  $("#bulkCat").innerHTML = `<option value="">Cat. masiva…</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
-  $("#bulkProv").innerHTML = `<option value="">Prov. masiva…</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
+  const catOptions = `<option value="">Todas las categorias</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
+  const provOptions = `<option value="">Todas las provincias</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
+  $("#selCat").innerHTML = catOptions;
+  $("#selProv").innerHTML = provOptions;
+  $("#bulkCat").innerHTML = `<option value="">Categoria masiva...</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
+  $("#bulkProv").innerHTML = `<option value="">Provincia masiva...</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
 }
 
 /* ======== Carga de ejemplo ======== */
@@ -206,9 +409,9 @@ function loadSample(){
   const sample = [
     {
       __id: String(__id_seq++),
-      titulo: "Hertz – Alquiler de autos para afiliadxs",
+      titulo: "Hertz - Alquiler de autos para afiliadxs",
       link: "https://labancaria.org/beneficios/hertz-descuento",
-      imagen_url: "",
+      imagen_url: "https://labancaria.org/wp-content/uploads/2024/11/hertz.webp",
       categoria: "Transporte",
       provincia: "Provincia desconocida",
       descripcion: "Descuento nacional con Hertz",
@@ -218,7 +421,7 @@ function loadSample(){
     },
     {
       __id: String(__id_seq++),
-      titulo: "Megatlon. Convenio para afiliadas y afiliados",
+      titulo: "Megatlon - Convenio para afiliadas y afiliados",
       link: "https://labancaria.org/beneficios/megatlon-convenio-para-afiliadas-y-afiliados",
       imagen_url: "",
       categoria: "Deportes y Gimnasios",
@@ -226,15 +429,67 @@ function loadSample(){
       descripcion: "",
       fecha_scraping: nowIso(),
       confidence: 1,
-      reasons: ["[+3] Deportes y Gimnasios: título \"megatlon\"","+ marca/entidad"]
+      reasons: ["[+3] Deportes y Gimnasios: titulo \"megatlon\"","+ marca/entidad"]
     }
   ];
-  state.rows = sample;
+  state.rows = dedupeRows(sample);
+  syncIdSequence(state.rows);
   state.page = 1;
   saveLocal();
   render();
 }
 
+/* ======== Utilidades de render ======== */
+function filterRows(){
+  let rows = [...state.rows];
+  if(state.q){
+    const nq = normalize(state.q);
+    rows = rows.filter(r =>
+      normalize(r.titulo||'').includes(nq) ||
+      normalize(r.descripcion||'').includes(nq) ||
+      normalize(r.link||'').includes(nq) ||
+      (r.reasons||[]).some(rx => normalize(rx).includes(nq))
+    );
+  }
+  if(state.cat) rows = rows.filter(r => r.categoria === state.cat);
+  if(state.prov) rows = rows.filter(r => r.provincia === state.prov);
+  rows = rows.filter(r => {
+    const c = typeof r.confidence === 'number' ? r.confidence : parseFloat(r.confidence || 0);
+    return c >= state.confMin && c <= state.confMax;
+  });
+  return rows;
+}
+function getPages(){
+  const total = filterRows().length;
+  return Math.max(1, Math.ceil(total / state.pageSize));
+}
+function paginateRows(rows){
+  const start = (state.page - 1) * state.pageSize;
+  return rows.slice(start, start + state.pageSize);
+}
+function selectOptions(list, current){
+  const normalizedCurrent = normalize(current || '');
+  let found = false;
+  const options = list.map(v => {
+    const isMatch = current && normalize(v) === normalizedCurrent;
+    if(isMatch) found = true;
+    return `<option value="${esc(v)}"${isMatch ? ' selected' : ''}>${esc(v)}</option>`;
+  }).join('');
+  if(current && !found){
+    const safeCurrent = esc(current);
+    return `<option value="${safeCurrent}" selected data-missing="1">${safeCurrent} (sin catalogar)</option>` + options;
+  }
+  return options;
+}
+function imagePreviewMarkup(row){
+  const url = (row.imagen_url || '').trim();
+  if(!url){
+    return `<div class="img-preview is-empty" data-role="img-preview"><span class="img-placeholder">Sin imagen</span></div>`;
+  }
+  const safeUrl = esc(url);
+  const safeAlt = row.titulo ? `Imagen de ${esc(row.titulo)}` : 'Imagen del beneficio';
+  return `<div class="img-preview" data-role="img-preview"><img data-role="thumb-img" src="${safeUrl}" alt="${safeAlt}" decoding="async" referrerpolicy="no-referrer" /></div>`;
+}
 /* ======== Import ======== */
 $("#fileInput").addEventListener("change", async (e)=>{
   const file = e.target.files?.[0]; if(!file) return;
@@ -248,19 +503,142 @@ $("#fileInput").addEventListener("change", async (e)=>{
       parsed = JSON.parse(trimmed);
     }
   }catch(err){
-    alert("Archivo inválido: " + err.message);
+    alert("Archivo invalido: " + err.message);
     e.target.value = "";
     return;
   }
-  state.rows = parsed.map(r => ({ __id: String(__id_seq++), ...r }));
+  state.rows = dedupeRows((Array.isArray(parsed) ? parsed : []).map(r => ({ __id: String(__id_seq++), ...r })));
+  syncIdSequence(state.rows);
   state.page = 1;
   saveLocal();
   render();
   e.target.value = "";
 });
 
+function render(){
+  const all = filterRows();
+  const pages = getPages();
+  if(state.page>pages) state.page=pages;
+  if(state.editingId && !all.some(r => r.__id === state.editingId)) state.editingId = null;
+  const pageRows = paginateRows(all);
+
+  $("#lblCount").textContent = `${all.length} resultados`;
+  $("#lblPage").textContent = `Pagina ${state.page} de ${pages}`;
+
+  const tbody = $("#tbody");
+  tbody.innerHTML = pageRows.map(r => {
+    const reasons = (r.reasons||[]).slice(0,MAX_TAGS).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+    const rowClass = state.editingId === r.__id ? ' class="is-editing"' : '';
+    return `
+      <tr data-id="${esc(r.__id)}"${rowClass}>
+        <td class="w-title">
+          <input class="cell cell-title" value="${esc(r.titulo||"")}" placeholder="Titulo" />
+          ${state.showReasons ? `<div class="tags" data-role="reasons">${reasons}</div>` : ""}
+        </td>
+        <td class="w-link">
+          <input class="cell cell-link" value="${esc(r.link||"")}" placeholder="https://..." />
+        </td>
+        <td class="w-img">
+          <div class="img-cell">
+            ${imagePreviewMarkup(r)}
+            <input class="cell cell-img" value="${esc(r.imagen_url||"")}" placeholder="https://..." />
+          </div>
+        </td>
+        <td class="w-cat">
+          <select class="cell cell-categoria">
+            ${selectOptions(CATEGORY_ORDER, r.categoria||"")}
+          </select>
+        </td>
+        <td class="w-prov">
+          <select class="cell cell-provincia">
+            ${selectOptions(PROVINCIAS, r.provincia||"")}
+          </select>
+        </td>
+        <td class="w-conf">
+          <input type="number" class="cell cell-confidence" step="0.01" min="0" max="1" value="${typeof r.confidence==="number" ? r.confidence:(parseFloat(r.confidence)||0)}" />
+        </td>
+        <td class="w-desc">
+          <textarea class="cell cell-desc" rows="2" placeholder="Descripción">${esc(r.descripcion||"")}</textarea>
+        </td>
+        <td class="w-date">
+          <input class="cell cell-fecha" value="${esc(r.fecha_scraping||"")}" />
+        </td>
+        <td class="w-actions">
+          <div class="actions">
+            <button class="btn-outline act-edit">Modificar</button>
+            <button class="btn-outline act-del">Eliminar</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join("");
+}
+
+function refreshRowDom(tr, row){
+  const preview = tr.querySelector('[data-role="img-preview"]');
+  if(preview){
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = imagePreviewMarkup(row);
+    const next = wrapper.firstElementChild;
+    if(next) preview.replaceWith(next);
+  }
+  if(state.showReasons){
+    const container = tr.querySelector('[data-role="reasons"]');
+    if(container){
+      container.innerHTML = (row.reasons||[]).slice(0,MAX_TAGS).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+    }
+  }
+}
+
+document.addEventListener("error",(event)=>{
+  const target = event.target;
+  if(!(target instanceof HTMLImageElement)) return;
+  if(!target.matches(`[data-role="thumb-img"]`)) return;
+  const preview = target.closest(`[data-role="img-preview"]`);
+  if(!preview) return;
+  preview.classList.add("is-empty");
+  preview.innerHTML = `<span class="img-placeholder">Sin imagen</span>`;
+}, true);
+
 /* ======== Export ======== */
-$("#btnExportJSON").addEventListener("click", ()=> downloadFile("beneficios_editados.json", JSON.stringify(state.rows,null,2)));
+async function exportJsonAs(){
+  const payload = JSON.stringify(state.rows, null, 2);
+  if (!window.showSaveFilePicker){
+    downloadFile("beneficios_editados.json", payload);
+    setExportStatus("Descargado como beneficios_editados.json");
+    return;
+  }
+  try{
+    const handle = await window.showSaveFilePicker({
+      suggestedName: "beneficios_editados.json",
+      types: [{
+        description: "Archivo JSON",
+        accept: {
+          "application/json": [".json"]
+        }
+      }]
+    });
+    if(!handle) return;
+    if (typeof handle.createWritable !== "function"){
+      setExportStatus("El archivo seleccionado no permite escritura.", "error");
+      return;
+    }
+    const writable = await handle.createWritable();
+    await writable.write(payload);
+    await writable.close();
+    const name = handle.name || "beneficios_editados.json";
+    setExportStatus(`${name}: guardado ${new Date().toLocaleTimeString()}`, "success");
+  }catch(err){
+    if(err && err.name === "AbortError"){
+      setExportStatus("Exportacion cancelada.");
+      return;
+    }
+    console.error("No se pudo exportar el JSON:", err);
+    setExportStatus("Error al guardar el archivo (ver consola).", "error");
+  }
+}
+
+$("#btnExportJSON").addEventListener("click", exportJsonAs);
 $("#btnExportJSONL").addEventListener("click", ()=> downloadFile("beneficios_editados.jsonl", toJSONL(state.rows), "application/x-ndjson"));
 
 /* ======== Filtros ======== */
@@ -291,7 +669,7 @@ $("#bulkProv").addEventListener("change",(e)=>{
   e.target.value="";
 });
 
-/* ======== Paginación ======== */
+/* ======== Paginacion ======== */
 $("#selPageSize").addEventListener("change",(e)=>{
   const n = parseInt(e.target.value,10)||10;
   state.pageSize=n; state.page=1; render();
@@ -310,114 +688,39 @@ $("#btnAdd").addEventListener("click", ()=>{
   }, ...state.rows];
   saveLocal(); render();
 });
-
-/* ======== Render ======== */
-function filterRows(){
-  let rows = [...state.rows];
-  if(state.q){
-    const nq = normalize(state.q);
-    rows = rows.filter(r =>
-      normalize(r.titulo||"").includes(nq) ||
-      normalize(r.descripcion||"").includes(nq) ||
-      normalize(r.link||"").includes(nq) ||
-      (r.reasons||[]).some(rx => normalize(rx).includes(nq))
-    );
-  }
-  if(state.cat) rows = rows.filter(r => r.categoria===state.cat);
-  if(state.prov) rows = rows.filter(r => r.provincia===state.prov);
-  rows = rows.filter(r => {
-    const c = typeof r.confidence==="number" ? r.confidence : parseFloat(r.confidence||0);
-    return c>=state.confMin && c<=state.confMax;
-  });
-  return rows;
-}
-function getPages(){
-  const total = filterRows().length;
-  return Math.max(1, Math.ceil(total / state.pageSize));
-}
-function paginateRows(rows){
-  const start = (state.page-1)*state.pageSize;
-  return rows.slice(start, start+state.pageSize);
-}
-
-function selectOptions(list, current){
-  return list.map(v=>`<option value="${esc(v)}"${v===current?' selected':''}>${esc(v)}</option>`).join("");
-}
-
-function render(){
-  const all = filterRows();
-  const pages = getPages();
-  if(state.page>pages) state.page=pages;
-  const pageRows = paginateRows(all);
-
-  $("#lblCount").textContent = `${all.length} resultados`;
-  $("#lblPage").textContent = `Página ${state.page} de ${pages}`;
-
-  const tbody = $("#tbody");
-  tbody.innerHTML = pageRows.map(r => {
-    return `
-      <tr data-id="${esc(r.__id)}">
-        <td class="w-title">
-          <input class="cell cell-title" value="${esc(r.titulo||"")}" placeholder="Título" />
-          ${state.showReasons ? `<div class="tags">${(r.reasons||[]).slice(0,6).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
-        </td>
-        <td class="w-link">
-          <input class="cell cell-link" value="${esc(r.link||"")}" placeholder="https://…" />
-        </td>
-        <td class="w-img">
-          <input class="cell cell-img" value="${esc(r.imagen_url||"")}" placeholder="https://…" />
-        </td>
-        <td class="w-cat">
-          <select class="cell cell-categoria">
-            ${selectOptions(CATEGORY_ORDER, r.categoria||"")}
-          </select>
-        </td>
-        <td class="w-prov">
-          <select class="cell cell-provincia">
-            ${selectOptions(PROVINCIAS, r.provincia||"")}
-          </select>
-        </td>
-        <td class="w-conf">
-          <input type="number" class="cell cell-confidence" step="0.01" min="0" max="1" value="${typeof r.confidence==="number"?r.confidence:(parseFloat(r.confidence)||0)}" />
-        </td>
-        <td class="w-desc">
-          <textarea class="cell cell-desc" rows="2" placeholder="Descripción">${esc(r.descripcion||"")}</textarea>
-        </td>
-        <td class="w-date">
-          <input class="cell cell-fecha" value="${esc(r.fecha_scraping||"")}" />
-        </td>
-        <td class="w-actions">
-          <div class="actions">
-            <button class="btn-outline act-dup">Duplicar</button>
-            <button class="btn-outline act-del">Eliminar</button>
-          </div>
-        </td>
-      </tr>
-    `;
-  }).join("");
-}
-
-/* ======== Edición por delegación (ACTUALIZA POR ID) ======== */
 document.addEventListener("change",(e)=>{
+  if(!e.target.classList.contains("cell")) return;
   const tr = e.target.closest("tr[data-id]"); if(!tr) return;
   const id = tr.getAttribute("data-id");
   const row = state.rows.find(r => r.__id === id); if(!row) return;
 
+  let needsRender = false;
+  let needsRefresh = false;
+
   if(e.target.classList.contains("cell-title")) row.titulo = e.target.value;
   if(e.target.classList.contains("cell-link")) row.link = e.target.value;
-  if(e.target.classList.contains("cell-img")) row.imagen_url = e.target.value;
-  if(e.target.classList.contains("cell-categoria")) row.categoria = e.target.value; // FIX: guarda categoría
-  if(e.target.classList.contains("cell-provincia")) row.provincia = e.target.value; // FIX: guarda provincia
+  if(e.target.classList.contains("cell-img")){ row.imagen_url = e.target.value; needsRefresh = true; }
+  if(e.target.classList.contains("cell-categoria")){
+    row.categoria = e.target.value;
+    if(state.cat && row.categoria !== state.cat) needsRender = true;
+  }
+  if(e.target.classList.contains("cell-provincia")){
+    row.provincia = e.target.value;
+    if(state.prov && row.provincia !== state.prov) needsRender = true;
+  }
   if(e.target.classList.contains("cell-confidence")) row.confidence = clamp01(e.target.value, row.confidence||0);
   if(e.target.classList.contains("cell-desc")) row.descripcion = e.target.value;
   if(e.target.classList.contains("cell-fecha")) row.fecha_scraping = e.target.value;
 
   saveLocal();
-  render(); // re-render para reflejar selección (ya queda guardado)
+  if(needsRender){
+    render();
+  }else if(needsRefresh){
+    refreshRowDom(tr, row);
+  }
 });
 
 document.addEventListener("input",(e)=>{
-  // Para inputs/textarea que quieras que guarden "en vivo"
   if(!e.target.classList.contains("cell")) return;
   const tr = e.target.closest("tr[data-id]"); if(!tr) return;
   const id = tr.getAttribute("data-id");
@@ -431,6 +734,7 @@ document.addEventListener("input",(e)=>{
     row.link = e.target.value;
   }else if(e.target.classList.contains("cell-img")){
     row.imagen_url = e.target.value;
+    refreshRowDom(tr, row);
   }else if(e.target.classList.contains("cell-desc")){
     row.descripcion = e.target.value;
   }else if(e.target.classList.contains("cell-fecha")){
@@ -448,13 +752,18 @@ document.addEventListener("click",(e)=>{
     state.rows = state.rows.filter(r=>r.__id!==id);
     saveLocal(); render();
   }
-  if(e.target.classList.contains("act-dup") && tr){
+  if(e.target.classList.contains("act-edit") && tr){
     const id = tr.getAttribute("data-id");
-    const row = state.rows.find(r=>r.__id===id);
-    if(row){
-      const copy = {...row, __id:String(__id_seq++), fecha_scraping: nowIso()};
-      state.rows = [copy, ...state.rows];
-      saveLocal(); render();
+    state.editingId = id;
+    $$("#tbody tr.is-editing").forEach(row => row.classList.remove("is-editing"));
+    tr.classList.add("is-editing");
+    tr.scrollIntoView({block:"nearest"});
+    const firstEditable = tr.querySelector(".cell");
+    if(firstEditable){
+      firstEditable.focus();
+      if(typeof firstEditable.select === "function"){
+        firstEditable.select();
+      }
     }
   }
 });
@@ -469,3 +778,6 @@ render();
 </script>
 </body>
 </html>
+
+
+
