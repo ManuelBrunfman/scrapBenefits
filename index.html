@@ -1,783 +1,635 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Beneficios Dashboard - Editor</title>
-<style>
-  :root{
-    --bg:#f5f7fb;
-    --panel:#ffffff;
-    --muted:#6b7280;
-    --text:#101828;
-    --primary:#2563eb;
-    --border:#d1d8e5;
-    --accent:#eef2ff;
-    --shadow:0 12px 24px rgba(15,23,42,0.08);
-  }
-  *{box-sizing:border-box;}
-  html,body{height:100%;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font:14px/1.45 "Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,"Roboto","Helvetica Neue",sans-serif;
-  }
-  .app{
-    width:100%;
-    max-width:100%;
-    margin:0 auto;
-    padding:20px;
-  }
-  header{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:20px;
-    padding:24px;
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:18px;
-    box-shadow:var(--shadow);
-  }
-  header h1{
-    margin:0 0 6px 0;
-    font-size:24px;
-    font-weight:600;
-  }
-  header .muted{
-    color:var(--muted);
-    font-size:13px;
-  }
-  .row{display:flex; flex-wrap:wrap; gap:12px;}
-  .grow{flex:1 1 240px;}
-  .btn, .btn-outline, select, input, textarea{
-    border-radius:10px;
-    border:1px solid var(--border);
-    background:#fff;
-    color:var(--text);
-    padding:9px 12px;
-    font-size:14px;
-    transition:background 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease;
-  }
-  .btn{
-    background:var(--primary);
-    color:#fff;
-    border-color:var(--primary);
-    font-weight:600;
-  }
-  .btn:hover{filter:brightness(1.05);}
-  .btn-outline{
-    background:var(--panel);
-    color:var(--primary);
-    font-weight:600;
-  }
-  .btn-outline:hover{
-    background:var(--accent);
-  }
-  select:focus, input:focus, textarea:focus{
-    outline:none;
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(37,99,235,0.18);
-  }
-  textarea{
-    resize:vertical;
-    min-height:70px;
-  }
-  .toolbar{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    align-items:center;
-    justify-content:space-between;
-    margin:16px 0 0;
-    padding:16px 20px;
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:16px;
-  }
-  .chip{
-    font-size:13px;
-    color:var(--muted);
-  }
-  .table-wrap{
-    width:100%;
-    overflow:auto;
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:16px;
-    box-shadow:var(--shadow);
-    margin-top:18px;
-  }
-  table{
-    border-collapse:separate;
-    border-spacing:0;
-    width:1920px;
-    table-layout:fixed;
-  }
-  thead th{
-    position:sticky;
-    top:0;
-    background:#eef2ff;
-    z-index:1;
-    color:#1f2937;
-    font-weight:600;
-    text-align:left;
-    padding:12px 14px;
-    border-bottom:1px solid var(--border);
-  }
-  tbody td{
-    padding:14px;
-    border-top:1px solid var(--border);
-    vertical-align:top;
-    background:var(--panel);
-  }
-  .w-title{width:420px;}
-  .w-link{width:280px;}
-  .w-img{width:240px;}
-  .w-cat{width:210px;}
-  .w-prov{width:210px;}
-  .w-conf{width:130px;}
-  .w-desc{width:360px;}
-  .w-date{width:200px;}
-  .w-actions{width:160px;}
-  .tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-top:8px;
-  }
-  .tag{
-    border:1px solid var(--border);
-    background:var(--accent);
-    color:#344054;
-    font-size:11px;
-    padding:2px 8px;
-    border-radius:999px;
-  }
-  .actions{display:flex; gap:8px;}
-  .small{font-size:12px;}
-  .muted{color:var(--muted);}
-  .hidden{display:none;}
-  tr.is-editing td{
-    background:var(--accent);
-    box-shadow:inset 0 0 0 2px rgba(37,99,235,0.25);
-  }
-  .input-number{width:100%;}
-  .filters{
-    display:grid;
-    grid-template-columns:1.2fr 0.9fr 0.9fr 0.6fr;
-    gap:10px;
-  }
-  .img-cell{
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-  }
-  .img-preview{
-    flex:0 0 112px;
-    width:112px;
-    height:96px;
-    border-radius:12px;
-    border:1px solid var(--border);
-    background:#eef2ff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    position:relative;
-  }
-  .img-preview:not(.is-empty){
-    box-shadow:0 6px 12px rgba(15,23,42,0.08);
-    border-color:#c7d2fe;
-  }
-  .img-preview img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
-    background:#fff;
-  }
-  .img-preview.is-empty{
-    border:1px dashed var(--border);
-    color:var(--muted);
-    background:transparent;
-    font-size:11px;
-    text-align:center;
-    padding:8px;
-    min-height:64px;
-    line-height:1.3;
-  }
-  .img-placeholder{display:block;}
-  @media (max-width:1200px){
-    table{width:1600px;}
-  }
-  @media (max-width:900px){
-    table{width:1300px;}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editor simple de beneficios</title>
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color-scheme: light;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #f5f5f7;
+      color: #111;
+    }
+    .shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: 24px;
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .controls .buttons,
+    .controls .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .controls .filters label {
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+      color: #374151;
+      gap: 4px;
+    }
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #2563eb;
+      color: #fff;
+    }
+    button.secondary {
+      background: #e5e7eb;
+      color: #111;
+    }
+    button:disabled,
+    select:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+    select {
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      padding: 6px 10px;
+      font-size: 14px;
+      background: #fff;
+    }
+    .status {
+      flex: 1;
+      min-height: 24px;
+      font-size: 14px;
+      color: #555;
+    }
+    .status[data-kind="error"] { color: #b91c1c; }
+    .status[data-kind="success"] { color: #15803d; }
+    .muted { color: #6b7280; font-size: 13px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 10px;
+      text-align: left;
+      vertical-align: middle;
+    }
+    th { background: #f3f4f6; font-weight: 600; }
+    tbody tr:hover { background: #f9fafb; }
+    .actions button {
+      margin-right: 6px;
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+    .empty {
+      text-align: center;
+      padding: 40px 0;
+      color: #6b7280;
+    }
+    a.link {
+      color: #2563eb;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .image-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .image-wrap img {
+      width: 180px;
+      max-height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 18px rgba(15,23,42,0.15);
+      cursor: zoom-in;
+      background: #0f172a;
+    }
+    /* Modal */
+    .modal[hidden] { display: none; }
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 24px;
+      z-index: 100;
+    }
+    .modal figure {
+      margin: 0;
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .modal img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #0f172a;
+    }
+    .modal .close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #111;
+    }
+    .modal figcaption {
+      font-size: 15px;
+    }
+  </style>
 </head>
 <body>
-<div class="app">
-  <header>
-    <div>
-      <h1>Beneficios Dashboard</h1>
-      <div class="muted">Filtrar / Editar / Exportar en un entorno claro</div>
-      <div class="row" style="margin-top:10px;">
-        <button class="btn-outline" id="btnLoadSample">Cargar ejemplo</button>
-        <label class="btn-outline" for="fileInput">Importar JSON/JSONL</label>
-        <input id="fileInput" type="file" accept=".json,.jsonl,.ndjson" class="hidden" />
-        <button class="btn" id="btnExportJSON">Exportar como...</button>
-        <button class="btn" id="btnExportJSONL">Exportar JSONL</button>
-        <span class="chip hidden" id="lblExportStatus"></span>
-        <label class="btn-outline"><input type="checkbox" id="chkReasons" /> Mostrar reasons</label>
-        <span class="grow"></span>
+  <main class="shell">
+    <h1>Editor simple de beneficios</h1>
+    <div class="controls">
+      <div class="buttons">
+        <button id="btnPick">Elegir archivo JSON</button>
+        <button id="btnReload" class="secondary" disabled>Releer archivo</button>
       </div>
-    </div>
-    <div class="grow">
       <div class="filters">
-        <input id="txtSearch" placeholder="Buscar por titulo, descripcion, link o reason..." />
-        <select id="selCat"></select>
-        <select id="selProv"></select>
-        <div class="row" style="gap:6px">
-          <input id="minConf" type="number" step="0.01" min="0" max="1" class="input-number" value="0" title="Confidence min." />
-          <input id="maxConf" type="number" step="0.01" min="0" max="1" class="input-number" value="1" title="Confidence max." />
-        </div>
-      </div>
-      <div class="row" style="margin-top:10px; gap:10px">
-        <button class="btn-outline" id="btnReset">Limpiar filtros</button>
-        <select id="bulkCat"><option value="">Categoria masiva...</option></select>
-        <select id="bulkProv"><option value="">Provincia masiva...</option></select>
-        <span class="chip" id="lblCount"></span>
-        <span class="grow"></span>
-        <label class="chip">Paginacion:
-          <select id="selPageSize">
-            <option>10</option><option>20</option><option>50</option><option>100</option>
+        <label>
+          Categoría
+          <select id="filterCat">
+            <option value="all">Todas</option>
           </select>
         </label>
+        <label>
+          Provincia
+          <select id="filterProv">
+            <option value="all">Todas</option>
+          </select>
+        </label>
+        <button id="btnResetFilters" class="secondary">Limpiar filtros</button>
       </div>
+      <div class="status" id="status">Mostrando datos en modo lectura. Elegí el archivo para poder guardar.</div>
     </div>
-  </header>
+    <div class="status" id="fileLabel"></div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Título</th>
+            <th>Link</th>
+            <th>Categoría</th>
+            <th>Provincia</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="benefitsBody">
+          <tr><td colspan="7" class="empty">No hay datos cargados.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="w-title">Titulo</th>
-          <th class="w-link">Link</th>
-          <th class="w-img">Imagen</th>
-          <th class="w-cat">Categoria</th>
-          <th class="w-prov">Provincia</th>
-          <th class="w-conf">Conf.</th>
-          <th class="w-desc">Descripción</th>
-          <th class="w-date">Fecha</th>
-          <th class="w-actions">Acciones</th>
-        </tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
+  <div class="modal" id="imageModal" hidden aria-hidden="true">
+    <figure>
+      <button class="close" type="button" data-action="close-modal" aria-label="Cerrar">×</button>
+      <img id="modalImage" src="" alt="Imagen del beneficio" />
+      <figcaption id="modalCaption"></figcaption>
+    </figure>
   </div>
 
-  <div class="toolbar">
-    <div class="small muted" id="lblPage">Pagina 1</div>
-    <div class="actions">
-      <button class="btn-outline" id="btnPrev">Prev</button>
-      <button class="btn-outline" id="btnNext">Next</button>
-      <button class="btn" id="btnAdd">Agregar fila</button>
-    </div>
-  </div>
-</div>
+  <script type="module">
+    const CATEGORIES = [
+      'Alojamiento',
+      'Gastronomía',
+      'Excursiones y Actividades',
+      'Transporte',
+      'Retail',
+      'Comercio',
+      'Servicios',
+      'Deportes',
+      'desconocida'
+    ];
 
-<script>
-/* ======== Datos de dominio ======== */
-const CATEGORY_ORDER = [
-  "Alojamiento","Excursiones y Actividades","Transporte","Gastronomía",
-  "Retail / Comercios","Deportes y Gimnasios","Salud","Educación","Servicios","Categoría desconocida"
-];
-const PROVINCIAS = [
-  "Buenos Aires","CABA","Catamarca","Chaco","Chubut","Córdoba","Corrientes","Entre Ríos","Formosa","Jujuy",
-  "La Pampa","La Rioja","Mendoza","Misiones","Neuquén","Río Negro","Salta","San Juan","San Luis","Santa Cruz",
-  "Santa Fe","Santiago del Estero","Tierra del Fuego","Tucumán","Nacional","Provincia desconocida"
-];
+    const PROVINCES = [
+      'Buenos Aires',
+      'CABA',
+      'Catamarca',
+      'Chaco',
+      'Chubut',
+      'Córdoba',
+      'Corrientes',
+      'Entre Ríos',
+      'Formosa',
+      'Jujuy',
+      'La Pampa',
+      'La Rioja',
+      'Mendoza',
+      'Misiones',
+      'Neuquén',
+      'Río Negro',
+      'Salta',
+      'San Juan',
+      'San Luis',
+      'Santa Cruz',
+      'Santa Fe',
+      'Santiago del Estero',
+      'Tierra del Fuego',
+      'Tucumán'
+    ];
 
-/* ======== Helpers ======== */
-const $ = sel => document.querySelector(sel);
-const $$ = sel => Array.from(document.querySelectorAll(sel));
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const normalize = (s="") => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
-const clamp01 = (v, fb=0)=>{const n=parseFloat(v); if(Number.isNaN(n))return fb; return Math.max(0,Math.min(1,n));};
-const nowIso = ()=>new Date().toISOString();
-const MAX_TAGS = 6;
-const exportStatusEl = document.getElementById('lblExportStatus');
+    const state = {
+      rows: [],
+      handle: null,
+      filterCat: 'all',
+      filterProv: 'all'
+    };
 
-function setExportStatus(message = '', tone = 'muted'){
-  if (!exportStatusEl) return;
-  if (message){
-    exportStatusEl.textContent = message;
-    exportStatusEl.classList.remove('hidden');
-  } else {
-    exportStatusEl.textContent = '';
-    exportStatusEl.classList.add('hidden');
-  }
-  if (tone === 'success') exportStatusEl.style.color = '#15803d';
-  else if (tone === 'error') exportStatusEl.style.color = '#b91c1c';
-  else exportStatusEl.style.color = 'var(--muted)';
-}
+    const $ = (sel) => document.querySelector(sel);
+    const tbody = $('#benefitsBody');
+    const statusBox = $('#status');
+    const fileLabel = $('#fileLabel');
+    const btnReload = $('#btnReload');
+    const filterCat = $('#filterCat');
+    const filterProv = $('#filterProv');
+    const btnResetFilters = $('#btnResetFilters');
+    const modal = $('#imageModal');
+    const modalImg = $('#modalImage');
+    const modalCaption = $('#modalCaption');
 
-function downloadFile(filename, content, mime="application/json"){
-  const blob = new Blob([content], {type:mime+";charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
-function toJSONL(arr){ return arr.map(o => JSON.stringify(o)).join("\n") + (arr.length ? "\n" : ""); }
-function dedupeRows(list){
-  const seen = new Set();
-  const clean = [];
-  for(const row of list){
-    if(!row || row.__id == null) continue;
-    if(seen.has(row.__id)) continue;
-    seen.add(row.__id);
-    clean.push(row);
-  }
-  return clean;
-}
-function syncIdSequence(rows){
-  let maxId = 0;
-  for(const row of rows){
-    const value = parseInt(row && row.__id, 10);
-    if(Number.isFinite(value) && value > maxId){
-      maxId = value;
-    }
-  }
-  __id_seq = Math.max(__id_seq, maxId + 1);
-}
-
-/* ======== Estado ======== */
-let state = {
-  rows: [],
-  q: "", cat: "", prov: "", confMin: 0, confMax: 1,
-  page: 1, pageSize: 10, showReasons: false,
-  editingId: null
-};
-let __id_seq = 1;
-
-/* ======== Persistencia ======== */
-function saveLocal(){
-  state.rows = dedupeRows(state.rows);
-  syncIdSequence(state.rows);
-  localStorage.setItem("beneficios_dashboard_cache_v3", JSON.stringify(state.rows));
-  localStorage.removeItem("beneficios_dashboard_cache_v2");
-}
-function loadLocal(){
-  try{
-    let raw = localStorage.getItem("beneficios_dashboard_cache_v3");
-    let usedLegacy = false;
-    if(!raw){
-      raw = localStorage.getItem("beneficios_dashboard_cache_v2");
-      usedLegacy = !!raw;
-    }
-    if(!raw) return;
-    const data = JSON.parse(raw);
-    state.rows = dedupeRows((Array.isArray(data) ? data : []).map(row => row && row.__id ? row : {...row, __id: String(__id_seq++)}));
-    syncIdSequence(state.rows);
-    if(usedLegacy){
-      saveLocal();
-    }
-  }catch(err){
-    console.error("No se pudo cargar el cache local:", err);
-  }
-}
-
-/* ======== Inicializaciï¿½n de filtros y combos ======== */
-function fillCombos(){
-  const catOptions = `<option value="">Todas las categorias</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
-  const provOptions = `<option value="">Todas las provincias</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
-  $("#selCat").innerHTML = catOptions;
-  $("#selProv").innerHTML = provOptions;
-  $("#bulkCat").innerHTML = `<option value="">Categoria masiva...</option>` + CATEGORY_ORDER.map(c=>`<option>${esc(c)}</option>`).join("");
-  $("#bulkProv").innerHTML = `<option value="">Provincia masiva...</option>` + PROVINCIAS.map(p=>`<option>${esc(p)}</option>`).join("");
-}
-
-/* ======== Carga de ejemplo ======== */
-function loadSample(){
-  const sample = [
-    {
-      __id: String(__id_seq++),
-      titulo: "Hertz - Alquiler de autos para afiliadxs",
-      link: "https://labancaria.org/beneficios/hertz-descuento",
-      imagen_url: "https://labancaria.org/wp-content/uploads/2024/11/hertz.webp",
-      categoria: "Transporte",
-      provincia: "Provincia desconocida",
-      descripcion: "Descuento nacional con Hertz",
-      fecha_scraping: nowIso(),
-      confidence: 0.85,
-      reasons: ["[+4] Transporte: marca/entidad (hertz)","url contiene /beneficios/"]
-    },
-    {
-      __id: String(__id_seq++),
-      titulo: "Megatlon - Convenio para afiliadas y afiliados",
-      link: "https://labancaria.org/beneficios/megatlon-convenio-para-afiliadas-y-afiliados",
-      imagen_url: "",
-      categoria: "Deportes y Gimnasios",
-      provincia: "Provincia desconocida",
-      descripcion: "",
-      fecha_scraping: nowIso(),
-      confidence: 1,
-      reasons: ["[+3] Deportes y Gimnasios: titulo \"megatlon\"","+ marca/entidad"]
-    }
-  ];
-  state.rows = dedupeRows(sample);
-  syncIdSequence(state.rows);
-  state.page = 1;
-  saveLocal();
-  render();
-}
-
-/* ======== Utilidades de render ======== */
-function filterRows(){
-  let rows = [...state.rows];
-  if(state.q){
-    const nq = normalize(state.q);
-    rows = rows.filter(r =>
-      normalize(r.titulo||'').includes(nq) ||
-      normalize(r.descripcion||'').includes(nq) ||
-      normalize(r.link||'').includes(nq) ||
-      (r.reasons||[]).some(rx => normalize(rx).includes(nq))
-    );
-  }
-  if(state.cat) rows = rows.filter(r => r.categoria === state.cat);
-  if(state.prov) rows = rows.filter(r => r.provincia === state.prov);
-  rows = rows.filter(r => {
-    const c = typeof r.confidence === 'number' ? r.confidence : parseFloat(r.confidence || 0);
-    return c >= state.confMin && c <= state.confMax;
-  });
-  return rows;
-}
-function getPages(){
-  const total = filterRows().length;
-  return Math.max(1, Math.ceil(total / state.pageSize));
-}
-function paginateRows(rows){
-  const start = (state.page - 1) * state.pageSize;
-  return rows.slice(start, start + state.pageSize);
-}
-function selectOptions(list, current){
-  const normalizedCurrent = normalize(current || '');
-  let found = false;
-  const options = list.map(v => {
-    const isMatch = current && normalize(v) === normalizedCurrent;
-    if(isMatch) found = true;
-    return `<option value="${esc(v)}"${isMatch ? ' selected' : ''}>${esc(v)}</option>`;
-  }).join('');
-  if(current && !found){
-    const safeCurrent = esc(current);
-    return `<option value="${safeCurrent}" selected data-missing="1">${safeCurrent} (sin catalogar)</option>` + options;
-  }
-  return options;
-}
-function imagePreviewMarkup(row){
-  const url = (row.imagen_url || '').trim();
-  if(!url){
-    return `<div class="img-preview is-empty" data-role="img-preview"><span class="img-placeholder">Sin imagen</span></div>`;
-  }
-  const safeUrl = esc(url);
-  const safeAlt = row.titulo ? `Imagen de ${esc(row.titulo)}` : 'Imagen del beneficio';
-  return `<div class="img-preview" data-role="img-preview"><img data-role="thumb-img" src="${safeUrl}" alt="${safeAlt}" decoding="async" referrerpolicy="no-referrer" /></div>`;
-}
-/* ======== Import ======== */
-$("#fileInput").addEventListener("change", async (e)=>{
-  const file = e.target.files?.[0]; if(!file) return;
-  const text = await file.text();
-  let parsed;
-  try{
-    const trimmed = text.trim();
-    if(trimmed.includes("\n") && trimmed.split("\n").every(ln=>!ln.trim() || ln.trim().startsWith("{"))){
-      parsed = trimmed.split("\n").filter(Boolean).map(JSON.parse);
-    }else{
-      parsed = JSON.parse(trimmed);
-    }
-  }catch(err){
-    alert("Archivo invalido: " + err.message);
-    e.target.value = "";
-    return;
-  }
-  state.rows = dedupeRows((Array.isArray(parsed) ? parsed : []).map(r => ({ __id: String(__id_seq++), ...r })));
-  syncIdSequence(state.rows);
-  state.page = 1;
-  saveLocal();
-  render();
-  e.target.value = "";
-});
-
-function render(){
-  const all = filterRows();
-  const pages = getPages();
-  if(state.page>pages) state.page=pages;
-  if(state.editingId && !all.some(r => r.__id === state.editingId)) state.editingId = null;
-  const pageRows = paginateRows(all);
-
-  $("#lblCount").textContent = `${all.length} resultados`;
-  $("#lblPage").textContent = `Pagina ${state.page} de ${pages}`;
-
-  const tbody = $("#tbody");
-  tbody.innerHTML = pageRows.map(r => {
-    const reasons = (r.reasons||[]).slice(0,MAX_TAGS).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
-    const rowClass = state.editingId === r.__id ? ' class="is-editing"' : '';
-    return `
-      <tr data-id="${esc(r.__id)}"${rowClass}>
-        <td class="w-title">
-          <input class="cell cell-title" value="${esc(r.titulo||"")}" placeholder="Titulo" />
-          ${state.showReasons ? `<div class="tags" data-role="reasons">${reasons}</div>` : ""}
-        </td>
-        <td class="w-link">
-          <input class="cell cell-link" value="${esc(r.link||"")}" placeholder="https://..." />
-        </td>
-        <td class="w-img">
-          <div class="img-cell">
-            ${imagePreviewMarkup(r)}
-            <input class="cell cell-img" value="${esc(r.imagen_url||"")}" placeholder="https://..." />
-          </div>
-        </td>
-        <td class="w-cat">
-          <select class="cell cell-categoria">
-            ${selectOptions(CATEGORY_ORDER, r.categoria||"")}
-          </select>
-        </td>
-        <td class="w-prov">
-          <select class="cell cell-provincia">
-            ${selectOptions(PROVINCIAS, r.provincia||"")}
-          </select>
-        </td>
-        <td class="w-conf">
-          <input type="number" class="cell cell-confidence" step="0.01" min="0" max="1" value="${typeof r.confidence==="number" ? r.confidence:(parseFloat(r.confidence)||0)}" />
-        </td>
-        <td class="w-desc">
-          <textarea class="cell cell-desc" rows="2" placeholder="Descripción">${esc(r.descripcion||"")}</textarea>
-        </td>
-        <td class="w-date">
-          <input class="cell cell-fecha" value="${esc(r.fecha_scraping||"")}" />
-        </td>
-        <td class="w-actions">
-          <div class="actions">
-            <button class="btn-outline act-edit">Modificar</button>
-            <button class="btn-outline act-del">Eliminar</button>
-          </div>
-        </td>
-      </tr>
-    `;
-  }).join("");
-}
-
-function refreshRowDom(tr, row){
-  const preview = tr.querySelector('[data-role="img-preview"]');
-  if(preview){
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = imagePreviewMarkup(row);
-    const next = wrapper.firstElementChild;
-    if(next) preview.replaceWith(next);
-  }
-  if(state.showReasons){
-    const container = tr.querySelector('[data-role="reasons"]');
-    if(container){
-      container.innerHTML = (row.reasons||[]).slice(0,MAX_TAGS).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
-    }
-  }
-}
-
-document.addEventListener("error",(event)=>{
-  const target = event.target;
-  if(!(target instanceof HTMLImageElement)) return;
-  if(!target.matches(`[data-role="thumb-img"]`)) return;
-  const preview = target.closest(`[data-role="img-preview"]`);
-  if(!preview) return;
-  preview.classList.add("is-empty");
-  preview.innerHTML = `<span class="img-placeholder">Sin imagen</span>`;
-}, true);
-
-/* ======== Export ======== */
-async function exportJsonAs(){
-  const payload = JSON.stringify(state.rows, null, 2);
-  if (!window.showSaveFilePicker){
-    downloadFile("beneficios_editados.json", payload);
-    setExportStatus("Descargado como beneficios_editados.json");
-    return;
-  }
-  try{
-    const handle = await window.showSaveFilePicker({
-      suggestedName: "beneficios_editados.json",
-      types: [{
-        description: "Archivo JSON",
-        accept: {
-          "application/json": [".json"]
+    async function init() {
+      try {
+        const res = await fetch('beneficios_final.json', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            state.rows = data;
+            render();
+          }
         }
-      }]
-    });
-    if(!handle) return;
-    if (typeof handle.createWritable !== "function"){
-      setExportStatus("El archivo seleccionado no permite escritura.", "error");
-      return;
-    }
-    const writable = await handle.createWritable();
-    await writable.write(payload);
-    await writable.close();
-    const name = handle.name || "beneficios_editados.json";
-    setExportStatus(`${name}: guardado ${new Date().toLocaleTimeString()}`, "success");
-  }catch(err){
-    if(err && err.name === "AbortError"){
-      setExportStatus("Exportacion cancelada.");
-      return;
-    }
-    console.error("No se pudo exportar el JSON:", err);
-    setExportStatus("Error al guardar el archivo (ver consola).", "error");
-  }
-}
-
-$("#btnExportJSON").addEventListener("click", exportJsonAs);
-$("#btnExportJSONL").addEventListener("click", ()=> downloadFile("beneficios_editados.jsonl", toJSONL(state.rows), "application/x-ndjson"));
-
-/* ======== Filtros ======== */
-$("#txtSearch").addEventListener("input", (e)=>{ state.q=e.target.value||""; state.page=1; render(); });
-$("#selCat").addEventListener("change", (e)=>{ state.cat=e.target.value||""; state.page=1; render(); });
-$("#selProv").addEventListener("change", (e)=>{ state.prov=e.target.value||""; state.page=1; render(); });
-$("#minConf").addEventListener("change", (e)=>{ state.confMin=clamp01(e.target.value,0); state.page=1; render(); });
-$("#maxConf").addEventListener("change", (e)=>{ state.confMax=clamp01(e.target.value,1); state.page=1; render(); });
-$("#chkReasons").addEventListener("change", (e)=>{ state.showReasons = !!e.target.checked; render(); });
-
-$("#btnReset").addEventListener("click", ()=>{
-  state.q=""; state.cat=""; state.prov=""; state.confMin=0; state.confMax=1; state.page=1;
-  $("#txtSearch").value=""; $("#selCat").value=""; $("#selProv").value=""; $("#minConf").value="0"; $("#maxConf").value="1";
-  render();
-});
-
-/* ======== Bulk ======== */
-$("#bulkCat").addEventListener("change",(e)=>{
-  const v = e.target.value; if(!v) return;
-  state.rows = state.rows.map(r => ({...r, categoria:v}));
-  saveLocal(); render();
-  e.target.value="";
-});
-$("#bulkProv").addEventListener("change",(e)=>{
-  const v = e.target.value; if(!v) return;
-  state.rows = state.rows.map(r => ({...r, provincia:v}));
-  saveLocal(); render();
-  e.target.value="";
-});
-
-/* ======== Paginacion ======== */
-$("#selPageSize").addEventListener("change",(e)=>{
-  const n = parseInt(e.target.value,10)||10;
-  state.pageSize=n; state.page=1; render();
-});
-$("#btnPrev").addEventListener("click", ()=>{ state.page=Math.max(1, state.page-1); render(); });
-$("#btnNext").addEventListener("click", ()=>{ const pages = getPages(); state.page=Math.min(pages, state.page+1); render(); });
-
-/* ======== CRUD ======== */
-$("#btnAdd").addEventListener("click", ()=>{
-  state.rows = [{
-    __id:String(__id_seq++),
-    titulo:"", link:"", imagen_url:"",
-    categoria:"Categoría desconocida", provincia:"Provincia desconocida",
-    descripcion:"", fecha_scraping: nowIso(),
-    confidence:0.5, reasons:[]
-  }, ...state.rows];
-  saveLocal(); render();
-});
-document.addEventListener("change",(e)=>{
-  if(!e.target.classList.contains("cell")) return;
-  const tr = e.target.closest("tr[data-id]"); if(!tr) return;
-  const id = tr.getAttribute("data-id");
-  const row = state.rows.find(r => r.__id === id); if(!row) return;
-
-  let needsRender = false;
-  let needsRefresh = false;
-
-  if(e.target.classList.contains("cell-title")) row.titulo = e.target.value;
-  if(e.target.classList.contains("cell-link")) row.link = e.target.value;
-  if(e.target.classList.contains("cell-img")){ row.imagen_url = e.target.value; needsRefresh = true; }
-  if(e.target.classList.contains("cell-categoria")){
-    row.categoria = e.target.value;
-    if(state.cat && row.categoria !== state.cat) needsRender = true;
-  }
-  if(e.target.classList.contains("cell-provincia")){
-    row.provincia = e.target.value;
-    if(state.prov && row.provincia !== state.prov) needsRender = true;
-  }
-  if(e.target.classList.contains("cell-confidence")) row.confidence = clamp01(e.target.value, row.confidence||0);
-  if(e.target.classList.contains("cell-desc")) row.descripcion = e.target.value;
-  if(e.target.classList.contains("cell-fecha")) row.fecha_scraping = e.target.value;
-
-  saveLocal();
-  if(needsRender){
-    render();
-  }else if(needsRefresh){
-    refreshRowDom(tr, row);
-  }
-});
-
-document.addEventListener("input",(e)=>{
-  if(!e.target.classList.contains("cell")) return;
-  const tr = e.target.closest("tr[data-id]"); if(!tr) return;
-  const id = tr.getAttribute("data-id");
-  const row = state.rows.find(r => r.__id === id); if(!row) return;
-
-  if(e.target.classList.contains("cell-confidence")){
-    row.confidence = clamp01(e.target.value, row.confidence||0);
-  }else if(e.target.classList.contains("cell-title")){
-    row.titulo = e.target.value;
-  }else if(e.target.classList.contains("cell-link")){
-    row.link = e.target.value;
-  }else if(e.target.classList.contains("cell-img")){
-    row.imagen_url = e.target.value;
-    refreshRowDom(tr, row);
-  }else if(e.target.classList.contains("cell-desc")){
-    row.descripcion = e.target.value;
-  }else if(e.target.classList.contains("cell-fecha")){
-    row.fecha_scraping = e.target.value;
-  }else{
-    return;
-  }
-  saveLocal();
-});
-
-document.addEventListener("click",(e)=>{
-  const tr = e.target.closest("tr[data-id]");
-  if(e.target.classList.contains("act-del") && tr){
-    const id = tr.getAttribute("data-id");
-    state.rows = state.rows.filter(r=>r.__id!==id);
-    saveLocal(); render();
-  }
-  if(e.target.classList.contains("act-edit") && tr){
-    const id = tr.getAttribute("data-id");
-    state.editingId = id;
-    $$("#tbody tr.is-editing").forEach(row => row.classList.remove("is-editing"));
-    tr.classList.add("is-editing");
-    tr.scrollIntoView({block:"nearest"});
-    const firstEditable = tr.querySelector(".cell");
-    if(firstEditable){
-      firstEditable.focus();
-      if(typeof firstEditable.select === "function"){
-        firstEditable.select();
+      } catch (err) {
+        console.warn('No se pudo precargar beneficios_final.json', err);
       }
     }
-  }
-});
 
-/* ======== Botones principales ======== */
-$("#btnLoadSample").addEventListener("click", loadSample);
+    function render() {
+      populateFilters();
+      const filtered = getFilteredRows();
+      if (!filtered.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty">No hay datos cargados.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = filtered.map((item, idx) => {
+        const originalIndex = state.rows.indexOf(item);
+        const link = item.url || '';
+        const category = item.category || '';
+        const province = item.province || '';
+        const image = getImage(item);
+        const catSelect = `
+          <select data-action="category" data-idx="${originalIndex}">
+            ${buildCategoryOptions(category)}
+          </select>
+        `;
+        const provSelect = `
+          <select data-action="province" data-idx="${originalIndex}">
+            ${buildProvinceOptions(province)}
+          </select>
+        `;
+        const imageCell = image
+          ? `<div class="image-wrap">
+               <img src="${escapeAttr(image)}" alt="${escapeAttr(item.title || 'Imagen')}" data-action="image" data-idx="${originalIndex}" />
+               <small class="muted">Click para ampliar</small>
+             </div>`
+          : '<span class="muted">Sin imagen</span>';
+        return `
+          <tr>
+            <td>${idx + 1}</td>
+            <td>${escapeHtml(item.title || '')}</td>
+            <td><a class="link" href="${escapeAttr(link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link)}</a></td>
+            <td>${catSelect}</td>
+            <td>${provSelect}</td>
+            <td>${imageCell}</td>
+            <td class="actions">
+              <button data-action="edit" data-idx="${originalIndex}">Modificar</button>
+              <button data-action="delete" data-idx="${originalIndex}" class="secondary">Eliminar</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
 
-/* ======== Boot ======== */
-fillCombos();
-loadLocal();
-render();
-</script>
+    function populateFilters() {
+      const categories = uniqueValues(state.rows.map(r => r.category));
+      const provinces = uniqueValues(state.rows.map(r => r.province));
+      fillFilter(filterCat, categories, state.filterCat, 'Categorías');
+      fillFilter(filterProv, provinces, state.filterProv, 'Provincias');
+    }
+
+    function fillFilter(selectEl, values, current, label) {
+      const opts = ['all', ...values];
+      selectEl.innerHTML = opts.map(value => {
+        const isAll = value === 'all';
+        const optionLabel = isAll ? `Todas` : (value || 'Sin dato');
+        const selected = value === current ? ' selected' : '';
+        return `<option value="${escapeAttr(value || '')}"${selected}>${escapeHtml(optionLabel)}</option>`;
+      }).join('');
+      selectEl.value = current;
+      if (selectEl.value !== current) {
+        selectEl.value = 'all';
+        if (selectEl === filterCat) state.filterCat = 'all';
+        if (selectEl === filterProv) state.filterProv = 'all';
+      }
+    }
+
+    function uniqueValues(list) {
+      const normalized = new Map();
+      list.forEach(value => {
+        const key = normalizeValue(value);
+        if (!key) return;
+        if (!normalized.has(key)) normalized.set(key, value);
+      });
+      return Array.from(normalized.values()).sort((a, b) => {
+        return normalizeValue(a).localeCompare(normalizeValue(b));
+      });
+    }
+
+    function normalizeValue(value) {
+      return (value || '').toString().trim().toLowerCase();
+    }
+
+    function getFilteredRows() {
+      const filterCatNorm = normalizeValue(state.filterCat);
+      const filterProvNorm = normalizeValue(state.filterProv);
+      return state.rows.filter(row => {
+        const catMatches = state.filterCat === 'all' || normalizeValue(row.category) === filterCatNorm;
+        const provMatches = state.filterProv === 'all' || normalizeValue(row.province) === filterProvNorm;
+        return catMatches && provMatches;
+      });
+    }
+
+    function buildCategoryOptions(current = '') {
+      const unique = [];
+      const seen = new Set();
+      const list = [''].concat(CATEGORIES, current ? [current] : []);
+      list.forEach(cat => {
+        const key = (cat || '').toLowerCase();
+        if (seen.has(key)) return;
+        seen.add(key);
+        unique.push(cat);
+      });
+      return unique.map(cat => {
+        const selected = cat === current ? ' selected' : '';
+        const label = cat || '- Seleccionar -';
+        return `<option value="${escapeAttr(cat || '')}"${selected}>${escapeHtml(label)}</option>`;
+      }).join('');
+    }
+
+    function buildProvinceOptions(current = '') {
+      const unique = [];
+      const seen = new Set();
+      const list = [''].concat(PROVINCES, current ? [current] : []);
+      list.forEach(prov => {
+        const key = normalizeValue(prov);
+        if (seen.has(key)) return;
+        seen.add(key);
+        unique.push(prov);
+      });
+      return unique.map(prov => {
+        const selected = prov === current ? ' selected' : '';
+        const label = prov || '- Seleccionar -';
+        return `<option value="${escapeAttr(prov || '')}"${selected}>${escapeHtml(label)}</option>`;
+      }).join('');
+    }
+
+    function getImage(item) {
+      return item.imageUrl || item.imagen_url || '';
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    function escapeAttr(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML.replace(/"/g, '&quot;');
+    }
+
+    async function pickFile() {
+      if (!window.showOpenFilePicker) {
+        alert('Este navegador no soporta la edición directa. Usá Chrome o Edge.');
+        return;
+      }
+      try {
+        const [handle] = await window.showOpenFilePicker({
+          types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+          excludeAcceptAllOption: false,
+          multiple: false
+        });
+        state.handle = handle;
+        fileLabel.textContent = `Archivo: ${handle.name}`;
+        btnReload.disabled = false;
+        await loadFromHandle();
+        setStatus('Archivo listo. Las ediciones se guardan al instante.', 'success');
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          setStatus('No se pudo abrir el archivo: ' + err.message, 'error');
+        }
+      }
+    }
+
+    async function ensurePermission() {
+      if (!state.handle) {
+        alert('Primero elegí el archivo JSON.');
+        setStatus('Necesitás elegir el archivo JSON para guardar cambios.', 'error');
+        return false;
+      }
+      const perm = await state.handle.queryPermission({ mode: 'readwrite' });
+      if (perm === 'granted') return true;
+      const req = await state.handle.requestPermission({ mode: 'readwrite' });
+      if (req !== 'granted') {
+        setStatus('Permiso para editar denegado.', 'error');
+      }
+      return req === 'granted';
+    }
+
+    async function loadFromHandle() {
+      if (!state.handle) return;
+      try {
+        const file = await state.handle.getFile();
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (!Array.isArray(data)) throw new Error('El JSON debe ser un array.');
+        state.rows = data;
+        render();
+      } catch (err) {
+        setStatus('No se pudo leer el archivo: ' + err.message, 'error');
+      }
+    }
+
+    async function saveToFile() {
+      if (!state.handle) return;
+      const writable = await state.handle.createWritable();
+      await writable.write(JSON.stringify(state.rows, null, 2));
+      await writable.close();
+    }
+
+    async function editRow(idx) {
+      if (!(await ensurePermission())) return;
+      const item = state.rows[idx];
+      const title = prompt('Título', item.title || '');
+      if (title === null) return;
+      const url = prompt('URL', item.url || '');
+      if (url === null) return;
+      const province = prompt('Provincia', item.province || '');
+      if (province === null) return;
+      Object.assign(item, {
+        title: title.trim(),
+        url: url.trim(),
+        province: province.trim() || null
+      });
+      await saveToFile();
+      render();
+      setStatus('Beneficio actualizado.', 'success');
+    }
+
+    async function deleteRow(idx) {
+      if (!(await ensurePermission())) return;
+      if (!confirm('¿Eliminar este beneficio?')) return;
+      state.rows.splice(idx, 1);
+      await saveToFile();
+      render();
+      setStatus('Beneficio eliminado.', 'success');
+    }
+
+    async function updateCategory(idx, value) {
+      if (!(await ensurePermission())) {
+        render();
+        return;
+      }
+      state.rows[idx].category = value || null;
+      await saveToFile();
+      setStatus('Categoría actualizada.', 'success');
+    }
+
+    async function updateProvince(idx, value) {
+      if (!(await ensurePermission())) {
+        render();
+        return;
+      }
+      state.rows[idx].province = value || null;
+      await saveToFile();
+      setStatus('Provincia actualizada.', 'success');
+    }
+
+    function showImage(idx) {
+      const row = state.rows[idx];
+      const img = getImage(row);
+      if (!img) {
+        setStatus('Este beneficio no tiene imagen.', 'error');
+        return;
+      }
+      modalImg.src = img;
+      modalCaption.textContent = row.title || img;
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideModal() {
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
+      modalCaption.textContent = '';
+    }
+
+    function setStatus(message, kind = 'info') {
+      statusBox.textContent = message;
+      statusBox.dataset.kind = kind;
+    }
+
+    document.getElementById('btnPick').addEventListener('click', pickFile);
+    btnReload.addEventListener('click', loadFromHandle);
+
+    tbody.addEventListener('click', (event) => {
+      const el = event.target.closest('[data-action]');
+      if (!el) return;
+      const idx = Number(el.dataset.idx);
+      if (Number.isNaN(idx)) return;
+      if (el.dataset.action === 'edit') {
+        editRow(idx);
+      } else if (el.dataset.action === 'delete') {
+        deleteRow(idx);
+      } else if (el.dataset.action === 'image') {
+        showImage(idx);
+      }
+    });
+
+    tbody.addEventListener('change', async (event) => {
+      const select = event.target.closest('select[data-action]');
+      if (!select) return;
+      const idx = Number(select.dataset.idx);
+      if (Number.isNaN(idx)) return;
+      if (select.dataset.action === 'category') {
+        await updateCategory(idx, select.value);
+      } else if (select.dataset.action === 'province') {
+        await updateProvince(idx, select.value);
+      }
+      render();
+    });
+
+    filterCat.addEventListener('change', (event) => {
+      const value = event.target.value;
+      state.filterCat = value === 'all' ? 'all' : value;
+      render();
+    });
+    filterProv.addEventListener('change', (event) => {
+      const value = event.target.value;
+      state.filterProv = value === 'all' ? 'all' : value;
+      render();
+    });
+    btnResetFilters.addEventListener('click', () => {
+      state.filterCat = 'all';
+      state.filterProv = 'all';
+      filterCat.value = 'all';
+      filterProv.value = 'all';
+      render();
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target.dataset.action === 'close-modal' || event.target === modal) {
+        hideModal();
+      }
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.hidden) hideModal();
+    });
+
+    init();
+  </script>
 </body>
 </html>
-
-
-
